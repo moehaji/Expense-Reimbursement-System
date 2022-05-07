@@ -5,6 +5,7 @@ package com.revature;
 
 import com.revature.dao.ReimbursementDaoJDBC;
 import com.revature.models.Reimbursement;
+import com.revature.models.ReimbursementStatus;
 
 import java.util.Date;
 
@@ -15,8 +16,11 @@ public class Driver {
         Reimbursement r = new Reimbursement(0, 50, "2022-04-12","2022-03-12", "esfdrgfh", 1,1,1,1 );
 
         ReimbursementDaoJDBC n = new ReimbursementDaoJDBC(r);
-        n.createReimbursement(r);
-        //System.out.println(n.viewAllReimbursement());
+        //n.createReimbursement(r);
+//        ReimbursementStatus status = ReimbursementStatus.PENDING;
+//        System.out.println(n.viewAllReimbursement());
+//        System.out.println(n.viewSpecificReimbursement(1));
+        System.out.println(n.viewPendingReimbursement(1));
 
     }
 }

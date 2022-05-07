@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 f
 6app/src/main/java/com/revature/models/LoginObject.java,f\b\fb0517f87edb1c5c5653a0c040b050c642615eb1
@@ -19,3 +20,5 @@ i
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 Z
 *app/src/main/java/com/revature/Driver.java,2\f\2fa7495706bfabbda86dd8df504f7cedc2a15522
+=======
+>>>>>>> 8daaed5177ed99afc684f1523dc65e759ae86479
