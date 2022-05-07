@@ -21,8 +21,15 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
         Connection c = cs.getConnection();
 
         String sql = "insert into reimbursement " +
+<<<<<<< HEAD
                 "(amount, submitted_date, resolved_date, description, reimbursement_author, " +
                 "reimbursement_resolver, reimbursement_status, reimbursement_type) " +
+=======
+                "(amount, submitted_date, resolved_date, description, reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
+<<<<<<< HEAD
+                "values " + "('" + r.getAmount() + "',";
+=======
+>>>>>>> 224711257767ecc9cd8eb0e257cac7bf1d03d769
                 "values (?,?,?,?,?,?,?,?)";
 
         try {
@@ -88,6 +95,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
     @Override
     public void dleteReimbursement(int id) {
+>>>>>>> 886aebfab32a60477123ed95763eaec7a485ab55
 
     }
 
