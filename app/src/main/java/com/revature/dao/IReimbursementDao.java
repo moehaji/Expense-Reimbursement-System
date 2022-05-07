@@ -22,6 +22,6 @@ public interface IReimbursementDao {
     public Reimbursement updateReimbursementStatus(Reimbursement r);
 
     //Delete
-    public void dleteReimbursement(int id);
+    public void deleteReimbursement(int id);
 
 }
