@@ -3,11 +3,21 @@
  */
 package com.revature;
 
+import com.revature.dao.ReimbursementDaoJDBC;
+import com.revature.models.Reimbursement;
+
+import java.util.Date;
+
 public class Driver {
 
     public static void main(String[] args) {
 
-        System.out.println("Hi");
+        Reimbursement r = new Reimbursement(0, 50, "2022-04-12","2022-03-12",
+                "esfdrgfh", 5,5,5,5 );
+
+        ReimbursementDaoJDBC n = new ReimbursementDaoJDBC(r);
+        n.createReimbursement(r);
+        //System.out.println(n.viewAllReimbursement());
         /*
          * Simple service layer methods
          */

@@ -5,9 +5,9 @@ import java.util.Date;
 public class Reimbursement {
 
     private int reimbursementId;
-    private int amount;
-    private Date submittedDate;
-    private Date resolvedDate;
+    private double amount;
+    private String submittedDate;
+    private String resolvedDate;
     private String description;
     private int reimbursementAuthor;
     private int reimbursementResolver;
@@ -17,7 +17,7 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(int reimbursementId, int amount, Date submittedDate, Date resolvedDate, String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatus, int reimbursementType) {
+    public Reimbursement(int reimbursementId, double amount, String submittedDate, String resolvedDate, String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatus, int reimbursementType) {
         this.reimbursementId = reimbursementId;
         this.amount = amount;
         this.submittedDate = submittedDate;
@@ -37,27 +37,27 @@ public class Reimbursement {
         this.reimbursementId = reimbursementId;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public Date getSubmittedDate() {
+    public String getSubmittedDate() {
         return submittedDate;
     }
 
-    public void setSubmittedDate(Date submittedDate) {
+    public void setSubmittedDate(String submittedDate) {
         this.submittedDate = submittedDate;
     }
 
-    public Date getResolvedDate() {
+    public String getResolvedDate() {
         return resolvedDate;
     }
 
-    public void setResolvedDate(Date resolvedDate) {
+    public void setResolvedDate(String resolvedDate) {
         this.resolvedDate = resolvedDate;
     }
 
