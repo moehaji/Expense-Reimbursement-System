@@ -21,28 +21,14 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
         Connection c = cs.getConnection();
 
         String sql = "insert into reimbursement " +
-<<<<<<< HEAD
                 "(amount, submitted_date, resolved_date, description, reimbursement_author, " +
-                "reimbursement_resolver, reimbursement_status, reimbursement_type) " +
-=======
-                "(amount, submitted_date, resolved_date, description, reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
-<<<<<<< HEAD
-                "values " + "('" + r.getAmount() + "',";
-=======
->>>>>>> 224711257767ecc9cd8eb0e257cac7bf1d03d769
-                "values (?,?,?,?,?,?,?,?)";
+                "reimbursement_resolver, reimbursement_status, reimbursement_type) values " +
+                "('" + r.getAmount() + "','" + r.getSubmittedDate() + "','" + r.getResolvedDate() + "','" + r.getDescription() + "','" + r.getReimbursementAuthor()
+                + "','" + r.getReimbursementResolver() + "','" + r.getReimbursementStatus() + "','" + r.getReimbursementType() + "')";
 
         try {
-            PreparedStatement ps = c.prepareStatement(sql);
-            ps.setDouble(1, r.getAmount());
-            ps.setString(2, r.getSubmittedDate());
-            ps.setString(3, r.getResolvedDate());
-            ps.setString(4, r.getDescription());
-            ps.setInt(5, r.getReimbursementAuthor());
-            ps.setInt(6, r.getReimbursementResolver());
-            ps.setInt(7, r.getReimbursementStatus());
-            ps.setInt(8, r.getReimbursementType());
-            ps.execute();
+            Statement s = c.createStatement();
+            s.execute(sql);
         } catch (SQLException e ) {
             throw new RuntimeException(e);
         }
@@ -94,8 +80,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public void dleteReimbursement(int id) {
->>>>>>> 886aebfab32a60477123ed95763eaec7a485ab55
+    public void deleteReimbursement(int id) {
 
     }
 

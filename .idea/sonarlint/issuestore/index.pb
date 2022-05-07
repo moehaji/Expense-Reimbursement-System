@@ -4,6 +4,7 @@ f
 m
 =app/src/main/java/com/revature/utils/ConnectionSingleton.java,b/e/be5f804cc3d9375a1f930bcc5a538d12231ce04d
 _
+<<<<<<< HEAD
 /app/src/main/java/com/revature/models/User.java,f/f/fff6efe38be8224006013f88454fc3e0dd198250
 i
 9app/src/main/java/com/revature/dao/IReimbursementDao.java,b/3/b3e7ef513d52d7638cb56b188227347f4bb8bdeb
@@ -24,3 +25,10 @@ e
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+=======
+/app/src/main/java/com/revature/models/User.java,f\f\fff6efe38be8224006013f88454fc3e0dd198250
+h
+8app/src/main/java/com/revature/models/Reimbursement.java,1\e\1e8aa4d68d391259bf4225eaa8879723af58d98d
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+>>>>>>> b552ed3f3b68ac96b5074c44c090bf20178d2fa9
