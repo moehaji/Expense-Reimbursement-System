@@ -17,7 +17,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
         String sql = "insert into reimbursement " +
                 "(amount, submitted_date, resolved_date, description, reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
-                "values ";
+                "values " + "('" + r.getAmount() + "',";
 
     }
 
