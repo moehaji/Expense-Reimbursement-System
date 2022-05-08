@@ -4,8 +4,10 @@
 package com.revature;
 
 import com.revature.dao.ReimbursementDaoJDBC;
+import com.revature.dao.UserDaoJDBC;
 import com.revature.models.Reimbursement;
 import com.revature.models.ReimbursementStatus;
+import com.revature.models.User;
 
 import java.util.Date;
 
@@ -16,13 +18,22 @@ public class Driver {
         Reimbursement r = new Reimbursement(0, 50, "2022-04-12",
                 "2022-03-12", "esfdrgfh", 1,
                 1,1,1 );
+        User u = new User(0, "bill76", "password",
+                "Bill", "Smith", "billsmilt@mail.com", 1);
 
         ReimbursementDaoJDBC n = new ReimbursementDaoJDBC(r);
-        //n.createReimbursement(r);
-//        ReimbursementStatus status = ReimbursementStatus.PENDING;
-//        System.out.println(n.viewAllReimbursement());
-//        System.out.println(n.viewSpecificReimbursement(1));
-        System.out.println(n.viewPendingReimbursement(1));
+        UserDaoJDBC uDao = new UserDaoJDBC(u);
+
+        u.setUsername("mark3454");
+        u.setPassword("New Pass");
+        u.setFirstName("Mark");
+        u.setUserId(4);
+        uDao.updateAccountInformation(u);
+
+        //n.updateReimbursementStatus(4,3);
+
+
+        //System.out.println(n.viewAllPendingList(1));
 
     }
 }

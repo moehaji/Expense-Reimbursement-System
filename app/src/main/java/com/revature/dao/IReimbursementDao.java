@@ -1,8 +1,6 @@
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
-import com.revature.models.ReimbursementStatus;
-
 import java.util.List;
 
 public interface IReimbursementDao {
@@ -11,18 +9,19 @@ public interface IReimbursementDao {
     public void createReimbursement(Reimbursement r);
 
     //Read
-    public List<Reimbursement> viewAllReimbursement();
+    // Employee
+    public List<Reimbursement> viewAllSpecificPendingReimbursement(int authorID, int statusPending);
 
-    public Reimbursement viewSpecificReimbursement(int id);
+    public List<Reimbursement> viewAllSpecificResolvedReimbursement(int authorID, int statusApproved, int statusDenied);
 
-    public List<Reimbursement> viewPendingReimbursement(int id);
+    // Manager
+    public List<Reimbursement> viewAllPendingList(int statusPending);
 
-    public List<Reimbursement> viewAllResolvedReimbursement();
+    public List<Reimbursement> viewAllResolvedList(int statusApproved, int statusDenied);
 
-    //Update
-    public Reimbursement updateReimbursementStatus(Reimbursement r);
+    // UPDATE
+    public void updateReimbursementStatus(int authorID, int status);
 
     //Delete
     public void deleteReimbursement(int id);
-
 }
