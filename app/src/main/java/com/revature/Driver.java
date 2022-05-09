@@ -3,41 +3,60 @@
  */
 package com.revature;
 
+import com.revature.controllers.ReimbursementController;
+import com.revature.controllers.UserController;
+import com.revature.dao.IReimbursementDao;
+import com.revature.dao.IUserDao;
 import com.revature.dao.ReimbursementDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
+import com.revature.services.ReimbursementService;
+import com.revature.services.UserService;
 import io.javalin.Javalin;
-import static io.javalin.apibuilder.ApiBuilder.*;
 import io.javalin.http.staticfiles.Location;
+
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Driver {
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create(config -> {
+        IUserDao uDao = new UserDaoJDBC();
+        UserService uServ = new UserService(uDao);
+        UserController uCon = new UserController(uServ);
+
+        IReimbursementDao rDao = new ReimbursementDaoJDBC();
+        ReimbursementService rServ = new ReimbursementService(rDao);
+        ReimbursementController rCon = new ReimbursementController(rServ);
+
+        Javalin server = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
-            //config.addStaticFiles("/resources/public", Location.CLASSPATH);
         });
 
-        app.post("/login", ctx -> {
-            String username = ctx.formParam("username");
-            String password = ctx.formParam("password");
-            ctx.result(username + " " + password);
+        server.routes(()-> {
+            path("users", () -> {
+                post("/login", uCon.handleLogin);
+                get("/view-employees", uCon.handleViewAllEmployees);
+//                delete("/{id}", uCon.handleDeleteUser);
+//                post("/logout", uCon.handleLogout);
+            });
+
+//            path("accounts", () -> {
+//                post("/create", aCon.handleCreateAccount);
+//                put("/deposit", aCon.handleDeposit);
+//                put("/withdraw", aCon.handleWithdraw);
+//                put("/transfer", aCon.handleTransfer);
+//            });
+//
+//            path("manager", () -> {
+//                get("/view", aCon.viewAllAccounts);
+//                post("/approve", aCon.approveAccount);
+//                put("/deny", aCon.denyAccount);
+//                delete("/{id}", aCon.closeAccount);
+//            });
         });
 
-        app.post("/logout", ctx -> {
-//            String username = ctx.formParam("username");
-//            String password = ctx.formParam("password");
-//            ctx.result(username + " " + password);
-        });
-
-        app.post("/login", ctx -> {
-            String username = ctx.formParam("username");
-            String password = ctx.formParam("password");
-            ctx.result(username + " " + password);
-        });
-
-        app.start(8080);
+        server.start(8080);
 
     }
 }

@@ -1,0 +1,1 @@
+2022-05-09 17:38:53 ERROR LoggingUtil:38 - User john123 was not found in the database
