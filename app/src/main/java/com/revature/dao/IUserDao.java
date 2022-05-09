@@ -5,12 +5,12 @@ import java.util.List;
 
 public interface IUserDao {
 
-    //READ
+    // READ
     public User viewAccountInformation(String username);
 
     public List<User> viewAllEmployees();
 
-    //UPDATE
+    // UPDATE
     public void updateAccountInformation(User u);
 
 }

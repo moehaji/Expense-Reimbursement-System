@@ -11,4 +11,10 @@ public class DriverTest {
 //        Driver classUnderTest = new Driver();
 //        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
 //    }
+
+    // Given
+
+    // When
+
+    // Then
 }

@@ -5,10 +5,10 @@ import java.util.List;
 
 public interface IReimbursementDao {
 
-    //CREATE
+    // CREATE
     public void createReimbursement(Reimbursement r);
 
-    //READ
+    // READ
     public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending);
 
     public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied);
@@ -20,6 +20,6 @@ public interface IReimbursementDao {
     // UPDATE
     public void updateReimbursementStatus(int reimbursementID, int status);
 
-    //Delete
+    // DELETE
     public void deleteReimbursement(int reimbursementID);
 }
