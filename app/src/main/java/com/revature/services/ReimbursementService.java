@@ -2,7 +2,6 @@ package com.revature.services;
 
 import com.revature.dao.IReimbursementDao;
 import com.revature.models.Reimbursement;
-
 import java.util.List;
 
 public class ReimbursementService {
@@ -50,5 +49,13 @@ public class ReimbursementService {
 
     public void deleteReimbursement(int reimbursementID) {
         deleteReimbursement(reimbursementID);
+    }
+
+    public void approveReimbursement() {
+
+    }
+
+    public void denyReimbursement() {
+
     }
 }

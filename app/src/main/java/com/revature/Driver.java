@@ -9,12 +9,9 @@ import com.revature.dao.IReimbursementDao;
 import com.revature.dao.IUserDao;
 import com.revature.dao.ReimbursementDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
-import com.revature.models.Reimbursement;
-import com.revature.models.User;
 import com.revature.services.ReimbursementService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
-import io.javalin.http.staticfiles.Location;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
@@ -34,26 +31,22 @@ public class Driver {
         });
 
         server.routes(()-> {
-            path("users", () -> {
+            path("user", () -> {
                 post("/login", uCon.handleLogin);
-                get("/view-employees", uCon.handleViewAllEmployees);
-//                delete("/{id}", uCon.handleDeleteUser);
-//                post("/logout", uCon.handleLogout);
+                post("/logout", uCon.handleLogout);
+                put("/update-account", uCon.handleUpdateAccountInformation);
             });
 
-//            path("accounts", () -> {
-//                post("/create", aCon.handleCreateAccount);
-//                put("/deposit", aCon.handleDeposit);
-//                put("/withdraw", aCon.handleWithdraw);
-//                put("/transfer", aCon.handleTransfer);
-//            });
-//
-//            path("manager", () -> {
-//                get("/view", aCon.viewAllAccounts);
-//                post("/approve", aCon.approveAccount);
-//                put("/deny", aCon.denyAccount);
-//                delete("/{id}", aCon.closeAccount);
-//            });
+            path("manager", () -> {
+                get("/view-employees", uCon.handleViewAllEmployees);
+                post("/approve", rCon.handleApproveReimbursement);
+                post("/deny", rCon.handleDenyReimbursement);
+            });
+
+            path("reimbursement", () -> {
+                post("/create", rCon.handleCreateReimbursement);
+                delete("/{id}", rCon.handleDeleteReimbursement);
+            });
         });
 
         server.start(8080);

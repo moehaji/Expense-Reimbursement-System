@@ -9,10 +9,10 @@ import io.javalin.http.Handler;
 public class UserController {
 
     private ObjectMapper oMap;
-    private UserService us;
+    private UserService uServ;
 
-    public UserController(UserService us) {
-        this.us = us;
+    public UserController(UserService uServ) {
+        this.uServ = uServ;
         this.oMap = new ObjectMapper();
     }
 
@@ -24,7 +24,7 @@ public class UserController {
         if (ctx.req.getSession().getAttribute("role") != (Object) 2) {
             ctx.result("Must be a manager");
         } else {
-            ctx.result(oMap.writeValueAsString(us.viewAllEmployees()));
+            ctx.result(oMap.writeValueAsString(uServ.viewAllEmployees()));
         }
     };
 
@@ -35,7 +35,7 @@ public class UserController {
     public Handler handleLogin = (ctx) -> {
         LoginObject lo = oMap.readValue(ctx.body(), LoginObject.class);
 
-        User u = us.login(lo.username, lo.password);
+        User u = uServ.login(lo.username, lo.password);
 
         if (u == null) {
             ctx.status(403);
@@ -47,5 +47,6 @@ public class UserController {
         }
     };
 
-
+    public Handler handleLogout = (ctx) -> {
+    };
 }

@@ -2,24 +2,17 @@ package com.revature.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.services.ReimbursementService;
-import com.revature.services.UserService;
 import io.javalin.http.Handler;
 
 public class ReimbursementController {
 
     private ObjectMapper oMap;
-    private ReimbursementService rs;
+    private ReimbursementService rServ;
 
-    public ReimbursementController(ReimbursementService rs) {
-        this.rs = rs;
+    public ReimbursementController(ReimbursementService rServ) {
+        this.rServ = rServ;
         this.oMap = new ObjectMapper();
     }
-
-    public Handler handleLogin = (ctx) -> {
-        String username = ctx.formParam("username");
-        String password = ctx.formParam("password");
-        ctx.result(username + " " + password);
-    };
 
     public Handler handleCreateReimbursement = (ctx) -> {
 
@@ -50,6 +43,14 @@ public class ReimbursementController {
     };
 
     public Handler handleDeleteReimbursement = (ctx) -> {
+
+    };
+
+    public Handler handleApproveReimbursement = (ctx) -> {
+
+    };
+
+    public Handler handleDenyReimbursement = (ctx) -> {
 
     };
 }
