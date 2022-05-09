@@ -6,10 +6,7 @@ package com.revature;
 import com.revature.dao.ReimbursementDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
 import com.revature.models.Reimbursement;
-import com.revature.models.ReimbursementStatus;
 import com.revature.models.User;
-
-import java.util.Date;
 
 public class Driver {
 
@@ -21,13 +18,13 @@ public class Driver {
         User u = new User(0, "bill76", "password",
                 "Bill", "Smith", "billsmilt@mail.com", 1);
 
-        ReimbursementDaoJDBC n = new ReimbursementDaoJDBC(r);
-        UserDaoJDBC uDao = new UserDaoJDBC(u);
+        ReimbursementDaoJDBC n = new ReimbursementDaoJDBC();
+        UserDaoJDBC uDao = new UserDaoJDBC();
 
-        u.setUsername("mark3454");
+        u.setUserName("mark3454");
         u.setPassword("New Pass");
         u.setFirstName("Mark");
-        u.setUserId(4);
+        u.setUserID(4);
         uDao.updateAccountInformation(u);
 
         //n.updateReimbursementStatus(4,3);

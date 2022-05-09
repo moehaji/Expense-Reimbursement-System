@@ -5,23 +5,21 @@ import java.util.List;
 
 public interface IReimbursementDao {
 
-    //Create
+    //CREATE
     public void createReimbursement(Reimbursement r);
 
-    //Read
-    // Employee
-    public List<Reimbursement> viewAllSpecificPendingReimbursement(int authorID, int statusPending);
+    //READ
+    public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending);
 
-    public List<Reimbursement> viewAllSpecificResolvedReimbursement(int authorID, int statusApproved, int statusDenied);
+    public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied);
 
-    // Manager
-    public List<Reimbursement> viewAllPendingList(int statusPending);
+    public List<Reimbursement> viewAllPendingRequest(int statusPending);
 
-    public List<Reimbursement> viewAllResolvedList(int statusApproved, int statusDenied);
+    public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied);
 
     // UPDATE
-    public void updateReimbursementStatus(int authorID, int status);
+    public void updateReimbursementStatus(int reimbursementID, int status);
 
     //Delete
-    public void deleteReimbursement(int id);
+    public void deleteReimbursement(int reimbursementID);
 }

@@ -1,9 +1,7 @@
 package com.revature.dao;
 
-import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import com.revature.utils.ConnectionSingleton;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,11 +12,10 @@ import java.util.List;
 public class UserDaoJDBC implements IUserDao {
     private ConnectionSingleton cs = ConnectionSingleton.getConnectionSingleton();
 
-    public UserDaoJDBC(User u){
-    }
+    public UserDaoJDBC(){}
 
     @Override
-    public User viewAccountInformation(String userName) {
+    public User viewAccountInformation(String username) {
         Connection c = cs.getConnection();
         User u = null;
 
@@ -26,7 +23,8 @@ public class UserDaoJDBC implements IUserDao {
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, userName);
+
+            ps.setString(1, username);
 
             ResultSet rs = ps.executeQuery();
 
@@ -51,6 +49,7 @@ public class UserDaoJDBC implements IUserDao {
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
+
             ps.setInt(1, 1);
 
             ResultSet rs = ps.executeQuery();
@@ -82,12 +81,12 @@ public class UserDaoJDBC implements IUserDao {
         try {
             PreparedStatement ps = c.prepareStatement(sql);
 
-            ps.setString(1, u.getUsername());
+            ps.setString(1, u.getUserName());
             ps.setString(2, u.getPassword());
             ps.setString(3, u.getFirstName());
             ps.setString(4, u.getLastName());
             ps.setString(5, u.getEmail());
-            ps.setInt(6, u.getUserId());
+            ps.setInt(6, u.getUserID());
 
             ps.execute();
         } catch (SQLException e) {

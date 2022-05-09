@@ -2,20 +2,19 @@ package com.revature.models;
 
 public class User {
 
-    private int userId;
-    private String username;
+    private int userID;
+    private String userName;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
     private int role;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(int userId, String username, String password, String firstName, String lastName, String email, int role) {
-        this.userId = userId;
-        this.username = username;
+    public User(int userID, String userName, String password, String firstName, String lastName, String email, int role) {
+        this.userID = userID;
+        this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,20 +22,20 @@ public class User {
         this.role = role;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -82,8 +81,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
+                "userID=" + userID +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

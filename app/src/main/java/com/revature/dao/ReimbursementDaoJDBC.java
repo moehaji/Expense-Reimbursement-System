@@ -1,5 +1,3 @@
-
-
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
@@ -12,8 +10,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
     private ConnectionSingleton cs = ConnectionSingleton.getConnectionSingleton();
 
-    public ReimbursementDaoJDBC(Reimbursement r) {
-    }
+    public ReimbursementDaoJDBC() {}
 
     @Override
     public void createReimbursement(Reimbursement r) {
@@ -28,6 +25,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
         try {
             Statement s = c.createStatement();
+
             s.execute(sql);
         } catch (SQLException e ) {
             throw new RuntimeException(e);
@@ -35,16 +33,49 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewAllSpecificResolvedReimbursement(int authorID, int statusApproved, int statusDenied) {
+    public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending) {
+        Connection c = cs.getConnection();
+
+        String sql = "select * from reimbursement where reimbursement_author = ? and reimbursement_status = ?";
+
+        Reimbursement r;
+        List<Reimbursement> specificPendingList = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = c.prepareStatement(sql);
+
+            ps.setInt(1, authorID);
+            ps.setInt(2, statusPending);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (statusPending == 1) {
+                while(rs.next()){
+                    r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
+                            rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
+                            rs.getInt(8), rs.getInt(9));
+                    specificPendingList.add(r);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return specificPendingList;
+    }
+
+    @Override
+    public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_author = ? and (reimbursement_status = ? or reimbursement_status = ?)";
 
-        Reimbursement r = null;
-        List<Reimbursement> resolvedList = new ArrayList<>();
+        Reimbursement r;
+        List<Reimbursement> specificResolvedList = new ArrayList<>();
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
+
             ps.setInt(1, authorID);
             ps.setInt(2, statusApproved);
             ps.setInt(3, statusDenied);
@@ -56,59 +87,27 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
                     r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
                             rs.getInt(8), rs.getInt(9));
-                    resolvedList.add(r);
+                    specificResolvedList.add(r);
                 }
-                return resolvedList;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return resolvedList;
+        return specificResolvedList;
     }
 
     @Override
-    public List<Reimbursement> viewAllSpecificPendingReimbursement(int authorID, int statusPending) {
-        Connection c = cs.getConnection();
-
-        String sql = "select * from reimbursement where reimbursement_author = ? and reimbursement_status = ?";
-
-        Reimbursement r = null;
-        List<Reimbursement> pendingList = new ArrayList<>();
-
-        try {
-            PreparedStatement ps = c.prepareStatement(sql);
-            ps.setInt(1, authorID);
-            ps.setInt(2, statusPending);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (statusPending == 1) {
-                while(rs.next()){
-                    r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
-                            rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
-                            rs.getInt(8), rs.getInt(9));
-                    pendingList.add(r);
-                }
-                return pendingList;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return pendingList;
-    }
-
-    @Override
-    public List<Reimbursement> viewAllPendingList(int statusPending) {
+    public List<Reimbursement> viewAllPendingRequest(int statusPending) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_status = ?";
-        Reimbursement r = null;
+        Reimbursement r;
         List<Reimbursement> allPendingList = new ArrayList<>();
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
+
             ps.setInt(1, statusPending);
 
             ResultSet rs = ps.executeQuery();
@@ -120,7 +119,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
                             rs.getInt(8), rs.getInt(9));
                     allPendingList.add(r);
                 }
-                return allPendingList;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -130,15 +128,16 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewAllResolvedList(int statusApproved, int statusDenied) {
+    public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_status = ? or reimbursement_status = ?";
-        Reimbursement r = null;
-        List<Reimbursement> resolvedList = new ArrayList<>();
+        Reimbursement r;
+        List<Reimbursement> allResolvedList = new ArrayList<>();
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
+
             ps.setInt(1, statusApproved);
             ps.setInt(2, statusDenied);
 
@@ -149,15 +148,14 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
                     r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
                             rs.getInt(8), rs.getInt(9));
-                    resolvedList.add(r);
+                    allResolvedList.add(r);
                 }
-                return resolvedList;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return resolvedList;
+        return allResolvedList;
     }
 
     @Override
@@ -179,7 +177,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public void deleteReimbursement(int id) {
+    public void deleteReimbursement(int reimbursementID) {
         Connection c = cs.getConnection();
 
         String sql = "delete from reimbursement where reimbursement_id = ?";
@@ -187,7 +185,8 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
         try {
             PreparedStatement ps = c.prepareStatement(sql);
 
-            ps.setInt(1,id);
+            ps.setInt(1, reimbursementID);
+
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
