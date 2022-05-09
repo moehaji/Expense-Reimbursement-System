@@ -159,6 +159,33 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
+    public List<Reimbursement> viewAllSpecificRequest(int authorID) {
+        Connection c = cs.getConnection();
+
+        String sql = "select * from reimbursement where reimbursement_author = ?";
+        List<Reimbursement> allSpecificEmployeeRequests = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = c.prepareStatement(sql);
+
+            ps.setInt(1, authorID);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                Reimbursement r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
+                        rs.getInt(8), rs.getInt(9));
+                allSpecificEmployeeRequests.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allSpecificEmployeeRequests;
+    }
+
+    @Override
     public void updateReimbursementStatus(int reimbursementID, int status) {
         Connection c = cs.getConnection();
 

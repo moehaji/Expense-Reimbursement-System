@@ -1,0 +1,19 @@
+
+N
+java:S1602",Remove useless curly braces around statement(œ­œûÿÿÿÿ8ê„õËŠ0
+u
+java:S1612"SReplace this lambda with method reference 'JavalinConfig::enableCorsForAllOrigins'.(œ­œûÿÿÿÿ8ï„õËŠ0
+X	java:S125"<This block of commented-out lines of code should be removed.(À‚Öş8ğ„õËŠ0
+]	java:S125"<This block of commented-out lines of code should be removed.(ÄšÔûüÿÿÿÿ8ÛäñÌŠ0
+d
+java:S1128"BRemove this unused import 'com.revature.dao.ReimbursementDaoJDBC'.(×œ‡±üÿÿÿÿ8”¢ñÌŠ0
+V
+java:S1128"9Remove this unused import 'com.revature.dao.UserDaoJDBC'.(ñöˆõ8•¢ñÌŠ0
+`
+java:S1128">Remove this unused import 'com.revature.models.Reimbursement'.(”ßÁõúÿÿÿÿ8•¢ñÌŠ0
+W
+java:S1128	"5Remove this unused import 'com.revature.models.User'.(òÒš»ûÿÿÿÿ8•¢ñÌŠ0
+_
+java:S1128"=Remove this unused import 'io.javalin.apibuilder.ApiBuilder'.(®ªÌùÿÿÿÿ8•¢ñÌŠ0
+c
+java:S1128"ARemove this unused import 'io.javalin.http.staticfiles.Location'.(£…ûÿÿÿÿ8•¢ñÌŠ0

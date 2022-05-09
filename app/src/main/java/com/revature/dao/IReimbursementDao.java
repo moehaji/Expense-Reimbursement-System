@@ -17,6 +17,8 @@ public interface IReimbursementDao {
 
     public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied);
 
+    public List<Reimbursement> viewAllSpecificRequest(int authorID);
+
     // UPDATE
     public void updateReimbursementStatus(int reimbursementID, int status);
 

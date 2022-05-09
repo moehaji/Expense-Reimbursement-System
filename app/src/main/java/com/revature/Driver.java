@@ -8,33 +8,36 @@ import com.revature.dao.UserDaoJDBC;
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import io.javalin.Javalin;
+import static io.javalin.apibuilder.ApiBuilder.*;
 import io.javalin.http.staticfiles.Location;
 
 public class Driver {
 
     public static void main(String[] args) {
-        Reimbursement r = new Reimbursement(0, 50, "2022-04-12",
-                "2022-03-12", "esfdrgfh", 1,
-                1,1,1 );
-        User u = new User(0, "bill76", "password",
-                "Bill", "Smith", "billsmilt@mail.com", 1);
-
-        ReimbursementDaoJDBC n = new ReimbursementDaoJDBC();
-        UserDaoJDBC uDao = new UserDaoJDBC();
-
-        u.setUserName("mark3454");
-        u.setPassword("New Pass");
-        u.setFirstName("Mark");
-        u.setUserID(4);
-        uDao.updateAccountInformation(u);
-
-        //n.updateReimbursementStatus(4,3);
-        //System.out.println(n.viewAllPendingList(1));
-
         Javalin app = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
-            config.addStaticFiles("../resources/public", Location.CLASSPATH);
+            //config.addStaticFiles("/resources/public", Location.CLASSPATH);
         });
+
+        app.post("/login", ctx -> {
+            String username = ctx.formParam("username");
+            String password = ctx.formParam("password");
+            ctx.result(username + " " + password);
+        });
+
+        app.post("/logout", ctx -> {
+//            String username = ctx.formParam("username");
+//            String password = ctx.formParam("password");
+//            ctx.result(username + " " + password);
+        });
+
+        app.post("/login", ctx -> {
+            String username = ctx.formParam("username");
+            String password = ctx.formParam("password");
+            ctx.result(username + " " + password);
+        });
+
+        app.start(8080);
 
     }
 }
