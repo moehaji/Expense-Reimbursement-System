@@ -7,11 +7,12 @@ import com.revature.dao.ReimbursementDaoJDBC;
 import com.revature.dao.UserDaoJDBC;
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
+import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 
 public class Driver {
 
     public static void main(String[] args) {
-
         Reimbursement r = new Reimbursement(0, 50, "2022-04-12",
                 "2022-03-12", "esfdrgfh", 1,
                 1,1,1 );
@@ -28,9 +29,12 @@ public class Driver {
         uDao.updateAccountInformation(u);
 
         //n.updateReimbursementStatus(4,3);
-
-
         //System.out.println(n.viewAllPendingList(1));
+
+        Javalin app = Javalin.create(config -> {
+            config.enableCorsForAllOrigins();
+            config.addStaticFiles("../resources/public", Location.CLASSPATH);
+        });
 
     }
 }
