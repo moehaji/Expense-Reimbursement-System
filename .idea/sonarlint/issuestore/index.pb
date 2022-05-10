@@ -7,8 +7,6 @@ d
 4app/src/main/java/com/revature/models/UserRoles.java,c/1/c19be3ad41d57f27875b11da67bbbf0d1269675d
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-e
-5app/src/main/java/com/revature/utils/LoggingUtil.java,b/4/b4d65e6825822e488c141173601b3357000368ac
 ^
 .app/src/test/java/com/revature/DriverTest.java,5/2/527180d8fb9d3c90a1fd307cd4fab4c19532a54a
 :

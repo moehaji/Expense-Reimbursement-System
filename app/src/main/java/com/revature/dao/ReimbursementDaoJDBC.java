@@ -16,17 +16,31 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     public void employeeCreateReimbursement(Reimbursement r) {
         Connection c = cs.getConnection();
 
-        String sql = "insert into reimbursement (amount, submitted_date, resolved_date, " +
-                "description, reimbursement_author, " +
-                "reimbursement_resolver, reimbursement_status, " +
-                "reimbursement_type) values " +
-                "('" + r.getAmount() + "','" + r.getSubmittedDate() + "','" + r.getResolvedDate() + "','" + r.getDescription() + "','" + r.getReimbursementAuthor()
-                + "','" + r.getReimbursementResolver() + "','" + r.getReimbursementStatus() + "','" + r.getReimbursementType() + "')";
+//        String sql = "insert into reimbursement (amount, submitted_date, resolved_date, " +
+//                "description, reimbursement_author, " +
+//                "reimbursement_resolver, reimbursement_status, " +
+//                "reimbursement_type) values " +
+//                "('" + r.getAmount() + "','" + r.getSubmittedDate() + "','" + r.getResolvedDate() + "','" + r.getDescription() + "','" + r.getReimbursementAuthor()
+//                + "','" + r.getReimbursementResolver() + "','" + r.getReimbursementStatus() + "','" + r.getReimbursementType() + "')";
+//        Statement s = c.createStatement();
+        String sql = "insert into reimbursement (amount, submitted_date, resolved_date, description, " +
+                "reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
+                "values (?, ?, ?, ?, ?, ?, ?, ?)";
+
 
         try {
-            Statement s = c.createStatement();
+            PreparedStatement ps = c.prepareStatement(sql);
 
-            s.execute(sql);
+            ps.setDouble(1, r.getAmount());
+            ps.setString(2, r.getSubmittedDate());
+            ps.setString(3, r.getResolvedDate());
+            ps.setString(4, r.getDescription());
+            ps.setInt(5, r.getReimbursementAuthor());
+            ps.setNull(6, r.getReimbursementResolver());
+            ps.setInt(7, r.getReimbursementStatus());
+            ps.setInt(8, r.getReimbursementType());
+
+            ps.execute();
         } catch (SQLException e ) {
             throw new RuntimeException(e);
         }
@@ -186,7 +200,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public void updateReimbursementStatus(int reimbursementID, int status) {
+    public void managerUpdateReimbursementStatus(int reimbursementID, int status) {
         Connection c = cs.getConnection();
 
         String sql = "update reimbursement set reimbursement_status = ? where reimbursement_id = ?";
@@ -203,20 +217,20 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
         }
     }
 
-    @Override
-    public void deleteReimbursement(int reimbursementID) {
-        Connection c = cs.getConnection();
-
-        String sql = "delete from reimbursement where reimbursement_id = ?";
-
-        try {
-            PreparedStatement ps = c.prepareStatement(sql);
-
-            ps.setInt(1, reimbursementID);
-
-            ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    public void deleteReimbursement(int reimbursementID) {
+//        Connection c = cs.getConnection();
+//
+//        String sql = "delete from reimbursement where reimbursement_id = ?";
+//
+//        try {
+//            PreparedStatement ps = c.prepareStatement(sql);
+//
+//            ps.setInt(1, reimbursementID);
+//
+//            ps.execute();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

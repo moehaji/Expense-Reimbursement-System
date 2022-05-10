@@ -92,6 +92,7 @@ public class UserDaoJDBC implements IUserDao {
             return u;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("ERROR");
             return null;
         }
     }

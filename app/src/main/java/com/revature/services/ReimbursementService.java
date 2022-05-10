@@ -2,6 +2,8 @@ package com.revature.services;
 
 import com.revature.dao.IReimbursementDao;
 import com.revature.models.Reimbursement;
+import com.revature.utils.LoggingUtil;
+
 import java.util.List;
 
 public class ReimbursementService {
@@ -22,42 +24,40 @@ public class ReimbursementService {
                 reimbursementAuthor, reimbursementResolver, reimbursementStatus, reimbursementType);
 
         rDao.employeeCreateReimbursement(r);
+        LoggingUtil.logger.info("Employee with id: " + r.getReimbursementAuthor() + " created a new reimbursement request" );
     }
 
     public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending) {
+        LoggingUtil.logger.info("Employee with id: " + authorID + " viewed all of their pending reimbursements" );
         return rDao.employeeViewPendingReimbursements(authorID, statusPending);
     }
 
     public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied) {
+        LoggingUtil.logger.info("Employee with id: " + authorID + " viewed their resolved reimbursements");
         return rDao.employeeViewResolvedReimbursements(authorID, statusApproved, statusDenied);
     }
 
     public List<Reimbursement> managerViewAllPendingReimbursements(int statusPending) {
+        LoggingUtil.logger.info("Manager viewed all pending reimbursements");
         return rDao.managerViewAllPendingReimbursements(statusPending);
     }
 
     public List<Reimbursement> managerViewAllResolvedReimbursements(int statusApproved, int statusDenied) {
+        LoggingUtil.logger.info("Manager viewed all resolved reimbursements");
         return rDao.managerViewAllResolvedReimbursements(statusApproved, statusDenied);
     }
 
     public List<Reimbursement> managerViewSpecificEmployeeReimbursements(int authorID) {
+        LoggingUtil.logger.info("Manager viewed all the reimbursements of user with id: " + authorID);
         return rDao.managerViewSpecificEmployeeReimbursements(authorID);
     }
 
-    public void updateReimbursementStatus(int reimbursementID, int status) {
-        rDao.updateReimbursementStatus(reimbursementID, status);
-    }
-
-    public void deleteReimbursement(int reimbursementID) {
-
-        deleteReimbursement(reimbursementID);
-    }
-
-    public void approveReimbursement() {
-
-    }
-
-    public void denyReimbursement() {
-
+    public void managerUpdateReimbursementStatus(int reimbursementID, int status) {
+        if (status == 2) {
+            LoggingUtil.logger.info("Manager approved the reimbursement id: " + reimbursementID);
+        } else if (status == 3) {
+            LoggingUtil.logger.info("Manager denied the reimbursement id: " + reimbursementID);
+        }
+        rDao.managerUpdateReimbursementStatus(reimbursementID, status);
     }
 }

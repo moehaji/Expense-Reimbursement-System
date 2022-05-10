@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.exceptions.IllegalRoleException;
 import com.revature.models.LoginObject;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -16,33 +17,44 @@ public class UserController {
         this.oMap = new ObjectMapper();
     }
 
-    public Handler handleEmployeeViewAccountInformation = (ctx) -> {
-
-    };
-
     public Handler handleManagerViewAllEmployees = (ctx) -> {
-        int role = 0;
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
-        if (ctx.req.getSession().getAttribute("role") == null) {
+
+        if (loggedIn == null) {
             ctx.status(401);
             ctx.result("Must login to view employees");
-        } else {
-            role =  Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
-        }
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
 
-        if(ctx.req.getSession().getAttribute("role") == null) {
-            ctx.result("Must login to view employees");
-        } else if (role != 2) {
-            ctx.result("Must be a manager");
-        } else {
-            ctx.result(oMap.writeValueAsString(uServ.managerViewAllEmployees()));
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(uServ.managerViewAllEmployees()));
+            } else {
+                throw new IllegalRoleException();
+            }
         }
     };
 
     public Handler handleEmployeeUpdateAccountInformation = (ctx) -> {
         User u = oMap.readValue(ctx.body(), User.class);
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
-        ctx.result(oMap.writeValueAsString(uServ.employeeUpdateAccountInformation(u)));
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to update your profile");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+
+            if (role == 1) {
+                ctx.result(oMap.writeValueAsString(uServ.employeeUpdateAccountInformation(u)));
+            } else if (role == 2) {
+                ctx.result("Must be an employee");
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 
     public Handler handleLogin = (ctx) -> {
@@ -56,10 +68,24 @@ public class UserController {
         } else {
             ctx.req.getSession().setAttribute("loggedIn", ""+u.getUserName());
             ctx.req.getSession().setAttribute("role", ""+u.getRole());
+            ctx.req.getSession().setAttribute("username", ""+u.getUserName());
+            ctx.req.getSession().setAttribute("userID", ""+u.getUserID());
             ctx.result(oMap.writeValueAsString(u));
         }
     };
 
     public Handler handleLogout = (ctx) -> {
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
+        String username = (String) ctx.req.getSession().getAttribute("username");
+
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("You must first login");
+        } else if (loggedIn != null) {
+            uServ.logout(username);
+            ctx.req.getSession().setAttribute("role", null);
+            ctx.req.getSession().setAttribute("loggedIn", null);
+            ctx.result("Logged out");
+        }
     };
 }
