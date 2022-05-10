@@ -3,7 +3,6 @@ package com.revature.services;
 import com.revature.dao.IUserDao;
 import com.revature.models.User;
 import com.revature.utils.LoggingUtil;
-
 import java.util.List;
 
 public class UserService {
@@ -16,20 +15,23 @@ public class UserService {
         this.uDao = uDao;
     }
 
-    public User viewAccountInformation(String username) {
-        return uDao.viewAccountInformation(username);
+    public User employeeViewAccountInformation(String username) {
+
+        return uDao.employeeViewAccountInformation(username);
     }
 
-    public List<User> viewAllEmployees() {
-        return uDao.viewAllEmployees();
+    public List<User> managerViewAllEmployees() {
+
+        return uDao.managerViewAllEmployees();
     }
 
-    public void updateAccountInformation(User u) {
-        uDao.updateAccountInformation(u);
+    public User employeeUpdateAccountInformation(User u) {
+
+        return uDao.employeeUpdateAccountInformation(u);
     }
 
     public User login(String username, String password) {
-        User u = uDao.viewAccountInformation(username);
+        User u = uDao.employeeViewAccountInformation(username);
 
         if (u != null) {
             if (password.equals(u.getPassword())) {

@@ -16,20 +16,33 @@ public class UserController {
         this.oMap = new ObjectMapper();
     }
 
-    public Handler handleViewAccountInformation = (ctx) -> {
+    public Handler handleEmployeeViewAccountInformation = (ctx) -> {
 
     };
 
-    public Handler handleViewAllEmployees = (ctx) -> {
-        if (ctx.req.getSession().getAttribute("role") != (Object) 2) {
+    public Handler handleManagerViewAllEmployees = (ctx) -> {
+        int role = 0;
+
+        if (ctx.req.getSession().getAttribute("role") == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else {
+            role =  Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+        }
+
+        if(ctx.req.getSession().getAttribute("role") == null) {
+            ctx.result("Must login to view employees");
+        } else if (role != 2) {
             ctx.result("Must be a manager");
         } else {
-            ctx.result(oMap.writeValueAsString(uServ.viewAllEmployees()));
+            ctx.result(oMap.writeValueAsString(uServ.managerViewAllEmployees()));
         }
     };
 
-    public Handler handleUpdateAccountInformation = (ctx) -> {
+    public Handler handleEmployeeUpdateAccountInformation = (ctx) -> {
+        User u = oMap.readValue(ctx.body(), User.class);
 
+        ctx.result(oMap.writeValueAsString(uServ.employeeUpdateAccountInformation(u)));
     };
 
     public Handler handleLogin = (ctx) -> {
@@ -41,8 +54,8 @@ public class UserController {
             ctx.status(403);
             ctx.result("Username or password was incorrect");
         } else {
-            ctx.req.getSession().setAttribute("loggedIn", "" + u.getUserName());
-            ctx.req.getSession().setAttribute("role", "" + u.getRole());
+            ctx.req.getSession().setAttribute("loggedIn", ""+u.getUserName());
+            ctx.req.getSession().setAttribute("role", ""+u.getRole());
             ctx.result(oMap.writeValueAsString(u));
         }
     };

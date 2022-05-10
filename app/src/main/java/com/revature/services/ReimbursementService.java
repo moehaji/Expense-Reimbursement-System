@@ -14,33 +14,34 @@ public class ReimbursementService {
         this.rDao = rd;
     }
 
-    public void createReimbursement(double amount, String submittedDate, String resolvedDate, String description,
-                                    int reimbursementAuthor, int reimbursementResolver, int reimbursementStatus, int reimbursementType) {
+    public void employeeCreateReimbursement(double amount, String submittedDate, String resolvedDate,
+                                            String description, int reimbursementAuthor, int reimbursementResolver,
+                                            int reimbursementStatus, int reimbursementType) {
 
         Reimbursement r = new Reimbursement(0, amount, submittedDate, resolvedDate, description,
                 reimbursementAuthor, reimbursementResolver, reimbursementStatus, reimbursementType);
 
-        rDao.createReimbursement(r);
+        rDao.employeeCreateReimbursement(r);
     }
 
-    public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending) {
-        return rDao.viewSpecificPendingRequest(authorID, statusPending);
+    public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending) {
+        return rDao.employeeViewPendingReimbursements(authorID, statusPending);
     }
 
-    public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied) {
-        return rDao.viewSpecificResolvedRequest(authorID, statusApproved, statusDenied);
+    public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied) {
+        return rDao.employeeViewResolvedReimbursements(authorID, statusApproved, statusDenied);
     }
 
-    public List<Reimbursement> viewAllPendingRequest(int statusPending) {
-        return rDao.viewAllSpecificRequest(statusPending);
+    public List<Reimbursement> managerViewAllPendingReimbursements(int statusPending) {
+        return rDao.managerViewAllPendingReimbursements(statusPending);
     }
 
-    public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied) {
-        return rDao.viewAllResolvedRequest(statusApproved, statusDenied);
+    public List<Reimbursement> managerViewAllResolvedReimbursements(int statusApproved, int statusDenied) {
+        return rDao.managerViewAllResolvedReimbursements(statusApproved, statusDenied);
     }
 
-    public List<Reimbursement> viewAllSpecificRequest(int authorID) {
-        return rDao.viewAllSpecificRequest(authorID);
+    public List<Reimbursement> managerViewSpecificEmployeeReimbursements(int authorID) {
+        return rDao.managerViewSpecificEmployeeReimbursements(authorID);
     }
 
     public void updateReimbursementStatus(int reimbursementID, int status) {
@@ -48,6 +49,7 @@ public class ReimbursementService {
     }
 
     public void deleteReimbursement(int reimbursementID) {
+
         deleteReimbursement(reimbursementID);
     }
 

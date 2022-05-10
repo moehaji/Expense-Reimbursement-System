@@ -5,8 +5,6 @@ l
 <app/src/main/java/com/revature/models/ReimbursementType.java,9/0/909e8eed50690cb1723178bf35564ef65db291b9
 d
 4app/src/main/java/com/revature/models/UserRoles.java,c/1/c19be3ad41d57f27875b11da67bbbf0d1269675d
-_
-/app/src/main/java/com/revature/models/User.java,f/f/fff6efe38be8224006013f88454fc3e0dd198250
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 e
@@ -16,5 +14,3 @@ e
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-h
-8app/src/main/java/com/revature/models/Reimbursement.java,1/e/1e8aa4d68d391259bf4225eaa8879723af58d98d

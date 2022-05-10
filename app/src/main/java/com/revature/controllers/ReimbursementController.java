@@ -14,27 +14,27 @@ public class ReimbursementController {
         this.oMap = new ObjectMapper();
     }
 
-    public Handler handleCreateReimbursement = (ctx) -> {
+    public Handler handleEmployeeCreateReimbursement = (ctx) -> {
 
     };
 
-    public Handler handleViewSpecificPendingRequest = (ctx) -> {
+    public Handler handleEmployeeViewPendingReimbursements = (ctx) -> {
 
     };
 
-    public Handler handleViewSpecificResolvedRequest = (ctx) -> {
+    public Handler handleEmployeeViewResolvedReimbursements = (ctx) -> {
 
     };
 
-    public Handler handleViewAllPendingRequest = (ctx) -> {
+    public Handler handleManagerViewAllPendingReimbursements = (ctx) -> {
 
     };
 
-    public Handler handleViewAllResolvedRequest = (ctx) -> {
+    public Handler handleManagerViewAllResolvedReimbursements = (ctx) -> {
 
     };
 
-    public Handler handleViewAllSpecificRequest = (ctx) -> {
+    public Handler handleManagerViewSpecificEmployeeReimbursements = (ctx) -> {
 
     };
 

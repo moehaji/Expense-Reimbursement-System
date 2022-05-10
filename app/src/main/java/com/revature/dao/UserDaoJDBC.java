@@ -15,13 +15,13 @@ public class UserDaoJDBC implements IUserDao {
     public UserDaoJDBC(){}
 
     @Override
-    public User viewAccountInformation(String username) {
+    public User employeeViewAccountInformation(String username) {
         Connection c = cs.getConnection();
-        User u = null;
 
         String sql = "select * from users where username = ?";
 
         try {
+            User u = null;
             PreparedStatement ps = c.prepareStatement(sql);
 
             ps.setString(1, username);
@@ -33,15 +33,15 @@ public class UserDaoJDBC implements IUserDao {
                 rs.getString(4), rs.getString(5), rs.getString(6),
                 rs.getInt(7));
             }
+            return u;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
-
-        return u;
     }
 
     @Override
-    public List<User> viewAllEmployees() {
+    public List<User> managerViewAllEmployees() {
         Connection c = cs.getConnection();
         List<User> allEmployees = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class UserDaoJDBC implements IUserDao {
     }
 
     @Override
-    public void updateAccountInformation(User u) {
+    public User employeeUpdateAccountInformation(User u) {
         Connection c = cs.getConnection();
 
         String sql = "update users " +
@@ -89,8 +89,10 @@ public class UserDaoJDBC implements IUserDao {
             ps.setInt(6, u.getUserID());
 
             ps.execute();
+            return u;
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
     }
 }

@@ -6,11 +6,11 @@ import java.util.List;
 public interface IUserDao {
 
     // READ
-    public User viewAccountInformation(String username);
+    public User employeeViewAccountInformation(String username);
 
-    public List<User> viewAllEmployees();
+    public List<User> managerViewAllEmployees();
 
     // UPDATE
-    public void updateAccountInformation(User u);
+    public User employeeUpdateAccountInformation(User u);
 
 }

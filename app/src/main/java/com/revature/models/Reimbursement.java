@@ -1,10 +1,8 @@
 package com.revature.models;
 
-import java.util.Date;
-
 public class Reimbursement {
 
-    private int reimbursementId;
+    private int reimbursementID;
     private double amount;
     private String submittedDate;
     private String resolvedDate;
@@ -14,11 +12,10 @@ public class Reimbursement {
     private int reimbursementStatus;
     private int reimbursementType;
 
-    public Reimbursement() {
-    }
+    public Reimbursement() {}
 
-    public Reimbursement(int reimbursementId, double amount, String submittedDate, String resolvedDate, String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatus, int reimbursementType) {
-        this.reimbursementId = reimbursementId;
+    public Reimbursement(int reimbursementID, double amount, String submittedDate, String resolvedDate, String description, int reimbursementAuthor, int reimbursementResolver, int reimbursementStatus, int reimbursementType) {
+        this.reimbursementID = reimbursementID;
         this.amount = amount;
         this.submittedDate = submittedDate;
         this.resolvedDate = resolvedDate;
@@ -29,12 +26,12 @@ public class Reimbursement {
         this.reimbursementType = reimbursementType;
     }
 
-    public int getReimbursementId() {
-        return reimbursementId;
+    public int getReimbursementID() {
+        return reimbursementID;
     }
 
-    public void setReimbursementId(int reimbursementId) {
-        this.reimbursementId = reimbursementId;
+    public void setReimbursementID(int reimbursementID) {
+        this.reimbursementID = reimbursementID;
     }
 
     public double getAmount() {
@@ -104,7 +101,7 @@ public class Reimbursement {
     @Override
     public String toString() {
         return "Reimbursement{" +
-                "reimbursementId=" + reimbursementId +
+                "reimbursementID=" + reimbursementID +
                 ", amount=" + amount +
                 ", submittedDate=" + submittedDate +
                 ", resolvedDate=" + resolvedDate +

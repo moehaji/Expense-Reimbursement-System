@@ -6,18 +6,18 @@ import java.util.List;
 public interface IReimbursementDao {
 
     // CREATE
-    public void createReimbursement(Reimbursement r);
+    public void employeeCreateReimbursement(Reimbursement r);
 
     // READ
-    public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending);
+    public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending);
 
-    public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied);
+    public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied);
 
-    public List<Reimbursement> viewAllPendingRequest(int statusPending);
+    public List<Reimbursement> managerViewAllPendingReimbursements(int statusPending);
 
-    public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied);
+    public List<Reimbursement> managerViewAllResolvedReimbursements(int statusApproved, int statusDenied);
 
-    public List<Reimbursement> viewAllSpecificRequest(int authorID);
+    public List<Reimbursement> managerViewSpecificEmployeeReimbursements(int authorID);
 
     // UPDATE
     public void updateReimbursementStatus(int reimbursementID, int status);

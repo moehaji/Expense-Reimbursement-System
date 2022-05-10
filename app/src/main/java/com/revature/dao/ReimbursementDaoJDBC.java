@@ -13,7 +13,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     public ReimbursementDaoJDBC() {}
 
     @Override
-    public void createReimbursement(Reimbursement r) {
+    public void employeeCreateReimbursement(Reimbursement r) {
         Connection c = cs.getConnection();
 
         String sql = "insert into reimbursement (amount, submitted_date, resolved_date, " +
@@ -33,7 +33,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewSpecificPendingRequest(int authorID, int statusPending) {
+    public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_author = ? and reimbursement_status = ?";
@@ -65,7 +65,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewSpecificResolvedRequest(int authorID, int statusApproved, int statusDenied) {
+    public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_author = ? and (reimbursement_status = ? or reimbursement_status = ?)";
@@ -98,7 +98,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewAllPendingRequest(int statusPending) {
+    public List<Reimbursement> managerViewAllPendingReimbursements(int statusPending) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_status = ?";
@@ -128,7 +128,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewAllResolvedRequest(int statusApproved, int statusDenied) {
+    public List<Reimbursement> managerViewAllResolvedReimbursements(int statusApproved, int statusDenied) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_status = ? or reimbursement_status = ?";
@@ -159,7 +159,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public List<Reimbursement> viewAllSpecificRequest(int authorID) {
+    public List<Reimbursement> managerViewSpecificEmployeeReimbursements(int authorID) {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_author = ?";

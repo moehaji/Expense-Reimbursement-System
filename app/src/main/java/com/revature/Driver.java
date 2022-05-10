@@ -12,7 +12,6 @@ import com.revature.dao.UserDaoJDBC;
 import com.revature.services.ReimbursementService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
-
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Driver {
@@ -30,21 +29,33 @@ public class Driver {
             config.enableCorsForAllOrigins();
         });
 
+        UserDaoJDBC ua = new UserDaoJDBC();
+        System.out.println(ua.managerViewAllEmployees());
+
         server.routes(()-> {
             path("user", () -> {
                 post("/login", uCon.handleLogin);
                 post("/logout", uCon.handleLogout);
-                put("/update-account", uCon.handleUpdateAccountInformation);
+                put("/update-account", uCon.handleEmployeeUpdateAccountInformation);
             });
 
             path("manager", () -> {
-                get("/view-employees", uCon.handleViewAllEmployees);
-                post("/approve", rCon.handleApproveReimbursement);
-                post("/deny", rCon.handleDenyReimbursement);
+                get("/view-all-pending-reimbursements", rCon.handleManagerViewAllPendingReimbursements);
+                post("/approve-reimbursement", rCon.handleApproveReimbursement);
+                post("/deny-reimbursement", rCon.handleDenyReimbursement);
+                get("/view-all-resolved-reimbursements", rCon.handleManagerViewAllResolvedReimbursements);
+                get("/view-employees", uCon.handleManagerViewAllEmployees);
+                get("/view-specific-employee-reimbursements", rCon.handleManagerViewSpecificEmployeeReimbursements);
+            });
+
+            path("employee", () -> {
+                get("/view-pending-reimbursements", rCon.handleEmployeeViewPendingReimbursements);
+                get("/view-resolved-reimbursements", rCon.handleEmployeeViewResolvedReimbursements);
             });
 
             path("reimbursement", () -> {
-                post("/create", rCon.handleCreateReimbursement);
+                post("/create", rCon.handleEmployeeCreateReimbursement);
+                put("/update-reimbursement", rCon.handleUpdateReimbursementStatus);
                 delete("/{id}", rCon.handleDeleteReimbursement);
             });
         });
