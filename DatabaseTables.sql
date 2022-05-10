@@ -1,3 +1,5 @@
+grant all privileges on database postgres to dbuser;
+
 create table user_roles (
 	role_id int primary key generated always as identity,
 	role varchar(64)
@@ -40,7 +42,11 @@ insert into user_roles(role) values
 	('MANAGER'); -- 2
 
 insert into users(username, password, first_name, last_name, email, role) values
-	('bill76', 'password', 'Bill', 'Smith', 'billsmilt@mail.com', 1);
+	('bill76', 'password', 'Bill', 'Smith', 'billsmilt@mail.com', 1),
+	('mohamed96', 'password', 'Mohamed', 'Abdulla', 'mohamed@mail.com', 1),
+	('john123', 'password', 'John', 'Smith', 'john@mail.com', 1),
+	('bayode123', 'password', 'Bayode', 'Ol', 'bayode@mail.com', 2),
+	('mark3454', 'New Pass', 'Mark', 'Smith', 'mark@mail.com', 1);
 
 insert into reimbursement_status (status) values 
 	('PENDING'), -- 1
@@ -55,7 +61,10 @@ insert into reimbursement_type (type) values
 
 insert into reimbursement (amount, submitted_date, resolved_date, description, reimbursement_author, 
 			reimbursement_resolver, reimbursement_status, reimbursement_type) values
-	(200, '2022-05-02', '2022-05-06', 'Hotel business trip', 1, 3, 2, 1);
+	(200, '2022-05-02', '2022-05-06', 'Hotel business trip', 1, 4, 2, 1),
+	(10, '2022-05-02', '2022-05-06', 'Hotel business trip', 2, 4, 1, 1),
+	(950, '2022-05-02', '2022-05-06', 'Hotel business trip', 4, 4, 3, 1),
+	(5, '2022-05-02', '2022-05-06', 'Hotel business trip', 2, 4, 2, 1);
 	
 -- SELECT
 select * from reimbursement;
