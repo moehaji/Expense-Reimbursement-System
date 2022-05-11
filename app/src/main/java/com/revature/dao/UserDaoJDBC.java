@@ -84,9 +84,9 @@ public class UserDaoJDBC implements IUserDao {
                         rs.getInt(7));
                 System.out.println(user);
 
-                if(user.getUserName().equals(u.getUserName())) {
+                if(user.getUserName().equals(u.getUserName()) && userID != user.getUserID()) {
                     return user;
-                } else if (user.getEmail().equals(u.getEmail())) {
+                } else if (user.getEmail().equals(u.getEmail()) && userID != user.getUserID()) {
                     return user;
                 }
             }

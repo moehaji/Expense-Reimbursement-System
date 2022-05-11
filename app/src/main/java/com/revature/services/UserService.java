@@ -23,16 +23,17 @@ public class UserService {
     public User employeeUpdateAccountInformation(User u, int userID) {
         User user = uDao.employeeUpdateAccountInformation(u, userID);
 
-        if(u.getUserName().equals(user.getUserName()) && userID != user.getUserID()) {
+        if (user.getUserID() == userID) {
+            LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
+            return user;
+        } else if (u.getUserName().equals(user.getUserName())) {
             LoggingUtil.logger.error("Username already exists. Choose a different username");
             return null;
         } else if (u.getEmail().equals(user.getEmail()) && userID != user.getUserID()) {
             LoggingUtil.logger.error("Email already exists. Choose a different email");
             return null;
-        } else {
-            LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
-            return user;
         }
+        return null;
     }
 
     public User login(String username, String password) {
