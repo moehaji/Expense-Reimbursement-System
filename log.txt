@@ -28,3 +28,40 @@
 2022-05-10 17:57:27 INFO  LoggingUtil:27 - Employee with id: 2 created a new reimbursement request
 2022-05-10 17:57:30 INFO  LoggingUtil:27 - Employee with id: 2 created a new reimbursement request
 2022-05-10 17:57:32 INFO  LoggingUtil:27 - Employee with id: 2 created a new reimbursement request
+2022-05-10 19:32:27 INFO  LoggingUtil:33 - User: testU4 logged in successfully
+2022-05-10 19:33:43 INFO  LoggingUtil:24 - User: john123 updated their account information
+2022-05-10 19:35:42 INFO  LoggingUtil:33 - User: testU4 logged in successfully
+2022-05-10 19:35:53 INFO  LoggingUtil:24 - User: john123 updated their account information
+2022-05-10 19:40:14 INFO  LoggingUtil:33 - User: testU4 logged in successfully
+2022-05-10 19:40:25 INFO  LoggingUtil:24 - User: john123 updated their account information
+2022-05-10 19:54:20 INFO  LoggingUtil:33 - User: testU4 logged in successfully
+2022-05-10 19:54:28 INFO  LoggingUtil:24 - User: john123 updated their account information
+2022-05-10 20:49:54 INFO  LoggingUtil:43 - User: testU4 logged in successfully
+2022-05-10 20:49:58 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-10 20:51:58 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-10 20:59:17 ERROR LoggingUtil:46 - User: john13 was not found in the database
+2022-05-10 20:59:32 INFO  LoggingUtil:43 - User: john13 logged in successfully
+2022-05-10 20:59:44 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-10 21:00:31 ERROR LoggingUtil:30 - Email already exists. Choose a different email
+2022-05-10 21:00:50 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-10 21:05:54 ERROR LoggingUtil:49 - User: john13 was not found in the database
+2022-05-10 21:06:25 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-10 21:07:04 INFO  LoggingUtil:33 - User: abcdefg updated their account information
+2022-05-10 21:08:25 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-10 21:08:54 INFO  LoggingUtil:33 - User: abcde updated their account information
+2022-05-11 07:02:22 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:03:03 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-11 07:04:53 INFO  LoggingUtil:33 - User: abcdefg updated their account information
+2022-05-11 07:05:25 INFO  LoggingUtil:33 - User: abcdef updated their account information
+2022-05-11 07:10:05 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:28:27 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:28:51 ERROR LoggingUtil:30 - Email already exists. Choose a different email
+2022-05-11 07:29:08 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-11 07:29:25 INFO  LoggingUtil:33 - User: abcdef updated their account information
+2022-05-11 07:41:34 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:41:52 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-11 07:42:32 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:42:36 ERROR LoggingUtil:27 - Username already exists. Choose a different username
+2022-05-11 07:42:42 INFO  LoggingUtil:33 - User: abcdef updated their account information
+2022-05-11 07:44:55 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
+2022-05-11 07:45:14 INFO  LoggingUtil:33 - User: abcdef updated their account information

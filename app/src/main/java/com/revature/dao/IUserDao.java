@@ -11,6 +11,6 @@ public interface IUserDao {
     public List<User> managerViewAllEmployees();
 
     // UPDATE
-    public User employeeUpdateAccountInformation(User u);
+    public User employeeUpdateAccountInformation(User u, int userID);
 
 }

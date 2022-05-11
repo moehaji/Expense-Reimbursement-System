@@ -3,7 +3,6 @@ package com.revature.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exceptions.IllegalRoleException;
 import com.revature.models.Reimbursement;
-import com.revature.models.User;
 import com.revature.services.ReimbursementService;
 import io.javalin.http.Handler;
 
@@ -19,8 +18,8 @@ public class ReimbursementController {
 
     public Handler handleEmployeeCreateReimbursement = (ctx) -> {
         Reimbursement r = oMap.readValue(ctx.body(), Reimbursement.class);
-
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
+        String username = (String) ctx.req.getSession().getAttribute("username");
 
         if (loggedIn == null) {
             ctx.status(401);
@@ -29,11 +28,10 @@ public class ReimbursementController {
             int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
             int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
 
-
             if (role == 1) {
                 rServ.employeeCreateReimbursement(r.getAmount(), r.getSubmittedDate(), r.getResolvedDate(),
                         r.getDescription(), authorID, r.getReimbursementResolver(),
-                        r.getReimbursementStatus(), r.getReimbursementType());
+                        r.getReimbursementStatus(), r.getReimbursementType(), username);
                 ctx.status(201);
                 ctx.result("Reimbursement created");
             } else if (role == 2) {
@@ -47,7 +45,7 @@ public class ReimbursementController {
     public Handler handleEmployeeViewPendingReimbursements = (ctx) -> {
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
-
+        String username = (String) ctx.req.getSession().getAttribute("username");
 
         if (loggedIn == null) {
             ctx.status(401);
@@ -56,7 +54,7 @@ public class ReimbursementController {
             int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
 
             if (role == 1) {
-                ctx.result(oMap.writeValueAsString(rServ.employeeViewPendingReimbursements(authorID, 1)));
+                ctx.result(oMap.writeValueAsString(rServ.employeeViewPendingReimbursements(authorID, 1, username)));
             } else if (role == 2) {
                 ctx.result("Must be an employee");
             } else {
@@ -68,7 +66,7 @@ public class ReimbursementController {
     public Handler handleEmployeeViewResolvedReimbursements = (ctx) -> {
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
-
+        String username = (String) ctx.req.getSession().getAttribute("username");
 
         if (loggedIn == null) {
             ctx.status(401);
@@ -77,7 +75,7 @@ public class ReimbursementController {
             int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
 
             if (role == 1) {
-                ctx.result(oMap.writeValueAsString(rServ.employeeViewResolvedReimbursements(authorID, 2,3)));
+                ctx.result(oMap.writeValueAsString(rServ.employeeViewResolvedReimbursements(authorID, 2,3, username)));
             } else if (role == 2) {
                 ctx.result("Must be an employee");
             } else {
@@ -102,11 +100,11 @@ public class ReimbursementController {
 
     };
 
-    public Handler handleApproveReimbursement = (ctx) -> {
+    public Handler handleManagerApproveReimbursement = (ctx) -> {
 
     };
 
-    public Handler handleDenyReimbursement = (ctx) -> {
+    public Handler handleManagerDenyReimbursement = (ctx) -> {
 
     };
 }

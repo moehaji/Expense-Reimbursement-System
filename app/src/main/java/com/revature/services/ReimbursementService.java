@@ -18,22 +18,22 @@ public class ReimbursementService {
 
     public void employeeCreateReimbursement(double amount, String submittedDate, String resolvedDate,
                                             String description, int reimbursementAuthor, int reimbursementResolver,
-                                            int reimbursementStatus, int reimbursementType) {
+                                            int reimbursementStatus, int reimbursementType, String username) {
 
         Reimbursement r = new Reimbursement(0, amount, submittedDate, resolvedDate, description,
                 reimbursementAuthor, reimbursementResolver, reimbursementStatus, reimbursementType);
 
         rDao.employeeCreateReimbursement(r);
-        LoggingUtil.logger.info("Employee with id: " + r.getReimbursementAuthor() + " created a new reimbursement request" );
+        LoggingUtil.logger.info("Employee with username: " + username + ", created a new reimbursement request" );
     }
 
-    public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending) {
-        LoggingUtil.logger.info("Employee with id: " + authorID + " viewed all of their pending reimbursements" );
+    public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending, String username) {
+        LoggingUtil.logger.info("Employee with username: " + username + ", viewed their pending reimbursements");
         return rDao.employeeViewPendingReimbursements(authorID, statusPending);
     }
 
-    public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied) {
-        LoggingUtil.logger.info("Employee with id: " + authorID + " viewed their resolved reimbursements");
+    public List<Reimbursement> employeeViewResolvedReimbursements(int authorID, int statusApproved, int statusDenied, String username) {
+        LoggingUtil.logger.info("Employee with username: " + username + ", viewed their resolved reimbursements");
         return rDao.employeeViewResolvedReimbursements(authorID, statusApproved, statusDenied);
     }
 
@@ -59,5 +59,13 @@ public class ReimbursementService {
             LoggingUtil.logger.info("Manager denied the reimbursement id: " + reimbursementID);
         }
         rDao.managerUpdateReimbursementStatus(reimbursementID, status);
+    }
+
+    public void managerApproveReimbursement() {
+
+    }
+
+    public void managerDenyReimbursement() {
+
     }
 }

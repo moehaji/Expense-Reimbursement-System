@@ -29,13 +29,15 @@ public class Driver {
             config.enableCorsForAllOrigins();
         });
 
-        UserDaoJDBC ua = new UserDaoJDBC();
-        System.out.println(ua.managerViewAllEmployees());
-
         server.routes(()-> {
             path("user", () -> {
                 post("/login", uCon.handleLogin);
                 post("/logout", uCon.handleLogout);
+            });
+
+            path("employee", () -> {
+                get("/view-pending-reimbursements", rCon.handleEmployeeViewPendingReimbursements);
+                get("/view-resolved-reimbursements", rCon.handleEmployeeViewResolvedReimbursements);
                 put("/update-account", uCon.handleEmployeeUpdateAccountInformation);
             });
 
@@ -44,14 +46,9 @@ public class Driver {
                 get("/view-all-resolved-reimbursements", rCon.handleManagerViewAllResolvedReimbursements);
                 get("/view-specific-employee-reimbursements", rCon.handleManagerViewSpecificEmployeeReimbursements);
                 put("/update-reimbursement-status", rCon.handleManagerUpdateReimbursementStatus);
-                post("/approve-reimbursement", rCon.handleApproveReimbursement);
-                post("/deny-reimbursement", rCon.handleDenyReimbursement);
+                put("/approve-reimbursement", rCon.handleManagerApproveReimbursement);
+                put("/deny-reimbursement", rCon.handleManagerDenyReimbursement);
                 get("/view-employees", uCon.handleManagerViewAllEmployees);
-            });
-
-            path("employee", () -> {
-                get("/view-pending-reimbursements", rCon.handleEmployeeViewPendingReimbursements);
-                get("/view-resolved-reimbursements", rCon.handleEmployeeViewResolvedReimbursements);
             });
 
             path("reimbursement", () -> {

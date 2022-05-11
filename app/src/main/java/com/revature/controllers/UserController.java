@@ -20,7 +20,6 @@ public class UserController {
     public Handler handleManagerViewAllEmployees = (ctx) -> {
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
-
         if (loggedIn == null) {
             ctx.status(401);
             ctx.result("Must login to view employees");
@@ -46,9 +45,15 @@ public class UserController {
             ctx.result("Must login to update your profile");
         } else if (loggedIn != null) {
             int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+            int userID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
 
             if (role == 1) {
-                ctx.result(oMap.writeValueAsString(uServ.employeeUpdateAccountInformation(u)));
+                User user = uServ.employeeUpdateAccountInformation(u, userID);
+                if(user == null) {
+                    ctx.result("Your username or password is already taken. Please choose another one");
+                } else {
+                    ctx.result(oMap.writeValueAsString(user));
+                }
             } else if (role == 2) {
                 ctx.result("Must be an employee");
             } else {
@@ -59,14 +64,13 @@ public class UserController {
 
     public Handler handleLogin = (ctx) -> {
         LoginObject lo = oMap.readValue(ctx.body(), LoginObject.class);
-
         User u = uServ.login(lo.username, lo.password);
 
         if (u == null) {
             ctx.status(403);
             ctx.result("Username or password was incorrect");
         } else {
-            ctx.req.getSession().setAttribute("loggedIn", ""+u.getUserName());
+            ctx.req.getSession().setAttribute("loggedIn", ""+u.getEmail());
             ctx.req.getSession().setAttribute("role", ""+u.getRole());
             ctx.req.getSession().setAttribute("username", ""+u.getUserName());
             ctx.req.getSession().setAttribute("userID", ""+u.getUserID());
@@ -83,8 +87,10 @@ public class UserController {
             ctx.result("You must first login");
         } else if (loggedIn != null) {
             uServ.logout(username);
-            ctx.req.getSession().setAttribute("role", null);
             ctx.req.getSession().setAttribute("loggedIn", null);
+            ctx.req.getSession().setAttribute("role", null);
+            ctx.req.getSession().setAttribute("username", null);
+            ctx.req.getSession().setAttribute("userID", null);
             ctx.result("Logged out");
         }
     };

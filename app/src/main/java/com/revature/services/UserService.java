@@ -16,13 +16,23 @@ public class UserService {
     }
 
     public List<User> managerViewAllEmployees() {
-        LoggingUtil.logger.info("Manager: viewed all employees");
+        LoggingUtil.logger.info("Manager viewed all employees");
         return uDao.managerViewAllEmployees();
     }
 
-    public User employeeUpdateAccountInformation(User u) {
-        LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
-        return uDao.employeeUpdateAccountInformation(u);
+    public User employeeUpdateAccountInformation(User u, int userID) {
+        User user = uDao.employeeUpdateAccountInformation(u, userID);
+
+        if(u.getUserName().equals(user.getUserName()) && userID != user.getUserID()) {
+            LoggingUtil.logger.error("Username already exists. Choose a different username");
+            return null;
+        } else if (u.getEmail().equals(user.getEmail()) && userID != user.getUserID()) {
+            LoggingUtil.logger.error("Email already exists. Choose a different email");
+            return null;
+        } else {
+            LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
+            return user;
+        }
     }
 
     public User login(String username, String password) {
@@ -33,9 +43,10 @@ public class UserService {
                 LoggingUtil.logger.info("User: " + u.getUserName() + " logged in successfully");
                 return u;
             } else {
-                LoggingUtil.logger.error("User: " + u.getUserName() + " was not found in the database");
-                return null;
+                LoggingUtil.logger.error("Username or password was incorrect");
             }
+        } else {
+            LoggingUtil.logger.error("User: " + username + " was not found in the database");
         }
         return null;
     }

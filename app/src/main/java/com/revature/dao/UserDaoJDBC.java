@@ -68,8 +68,31 @@ public class UserDaoJDBC implements IUserDao {
     }
 
     @Override
-    public User employeeUpdateAccountInformation(User u) {
+    public User employeeUpdateAccountInformation(User u, int userID) {
         Connection c = cs.getConnection();
+
+        String sqlStatement = "select * from users";
+
+        try {
+            PreparedStatement ps = c.prepareStatement(sqlStatement);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getInt(7));
+                System.out.println(user);
+
+                if(user.getUserName().equals(u.getUserName())) {
+                    return user;
+                } else if (user.getEmail().equals(u.getEmail())) {
+                    return user;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         String sql = "update users " +
                      "set username = ?, " +
@@ -86,13 +109,12 @@ public class UserDaoJDBC implements IUserDao {
             ps.setString(3, u.getFirstName());
             ps.setString(4, u.getLastName());
             ps.setString(5, u.getEmail());
-            ps.setInt(6, u.getUserID());
+            ps.setInt(6, userID);
 
             ps.execute();
             return u;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("ERROR");
             return null;
         }
     }

@@ -16,13 +16,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     public void employeeCreateReimbursement(Reimbursement r) {
         Connection c = cs.getConnection();
 
-//        String sql = "insert into reimbursement (amount, submitted_date, resolved_date, " +
-//                "description, reimbursement_author, " +
-//                "reimbursement_resolver, reimbursement_status, " +
-//                "reimbursement_type) values " +
-//                "('" + r.getAmount() + "','" + r.getSubmittedDate() + "','" + r.getResolvedDate() + "','" + r.getDescription() + "','" + r.getReimbursementAuthor()
-//                + "','" + r.getReimbursementResolver() + "','" + r.getReimbursementStatus() + "','" + r.getReimbursementType() + "')";
-//        Statement s = c.createStatement();
         String sql = "insert into reimbursement (amount, submitted_date, resolved_date, description, " +
                 "reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -52,7 +45,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
         String sql = "select * from reimbursement where reimbursement_author = ? and reimbursement_status = ?";
 
-        Reimbursement r;
         List<Reimbursement> specificPendingList = new ArrayList<>();
 
         try {
@@ -65,7 +57,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
             if (statusPending == 1) {
                 while(rs.next()){
-                    r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
+                    Reimbursement r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
                             rs.getInt(8), rs.getInt(9));
                     specificPendingList.add(r);
@@ -84,7 +76,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
         String sql = "select * from reimbursement where reimbursement_author = ? and (reimbursement_status = ? or reimbursement_status = ?)";
 
-        Reimbursement r;
         List<Reimbursement> specificResolvedList = new ArrayList<>();
 
         try {
@@ -98,7 +89,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
             if (statusApproved == 2 || statusDenied == 3) {
                 while(rs.next()){
-                    r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
+                    Reimbursement r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
                             rs.getInt(8), rs.getInt(9));
                     specificResolvedList.add(r);
