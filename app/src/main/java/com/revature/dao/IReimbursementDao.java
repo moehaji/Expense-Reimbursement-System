@@ -20,8 +20,5 @@ public interface IReimbursementDao {
     public List<Reimbursement> managerViewSpecificEmployeeReimbursements(int authorID);
 
     // UPDATE
-    public void managerUpdateReimbursementStatus(int reimbursementID, int status);
-
-//    // DELETE
-//    public void deleteReimbursement(int reimbursementID);
+    public Reimbursement managerUpdateReimbursementStatus(Reimbursement r, int status);
 }

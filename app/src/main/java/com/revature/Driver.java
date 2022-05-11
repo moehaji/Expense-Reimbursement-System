@@ -44,8 +44,7 @@ public class Driver {
             path("manager", () -> {
                 get("/view-all-pending-reimbursements", rCon.handleManagerViewAllPendingReimbursements);
                 get("/view-all-resolved-reimbursements", rCon.handleManagerViewAllResolvedReimbursements);
-                get("/view-specific-employee-reimbursements", rCon.handleManagerViewSpecificEmployeeReimbursements);
-                put("/update-reimbursement-status", rCon.handleManagerUpdateReimbursementStatus);
+                get("/view-specific-employee-reimbursements/{id}", rCon.handleManagerViewSpecificEmployeeReimbursements);
                 put("/approve-reimbursement", rCon.handleManagerApproveReimbursement);
                 put("/deny-reimbursement", rCon.handleManagerDenyReimbursement);
                 get("/view-employees", uCon.handleManagerViewAllEmployees);
@@ -57,6 +56,5 @@ public class Driver {
         });
 
         server.start(8080);
-
     }
 }

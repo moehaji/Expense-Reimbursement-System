@@ -65,3 +65,33 @@
 2022-05-11 07:42:42 INFO  LoggingUtil:33 - User: abcdef updated their account information
 2022-05-11 07:44:55 INFO  LoggingUtil:43 - User: abcdefg logged in successfully
 2022-05-11 07:45:14 INFO  LoggingUtil:33 - User: abcdef updated their account information
+2022-05-11 11:28:11 INFO  LoggingUtil:44 - User: abcdefg logged in successfully
+2022-05-11 11:28:45 ERROR LoggingUtil:30 - Username already exists. Choose a different username
+2022-05-11 11:30:08 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 11:30:36 ERROR LoggingUtil:30 - Username already exists. Choose a different username
+2022-05-11 12:01:30 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:01:40 INFO  LoggingUtil:51 - Manager viewed all the reimbursements of user with id: 4
+2022-05-11 12:04:00 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:04:06 INFO  LoggingUtil:51 - Manager viewed all the reimbursements of user with id: 1
+2022-05-11 12:04:41 INFO  LoggingUtil:51 - Manager viewed all the reimbursements of user with id: 2
+2022-05-11 12:31:59 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:36:13 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:40:06 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:40:11 INFO  LoggingUtil:58 - Manager approved the reimbursement id: 2
+2022-05-11 12:41:14 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:44:21 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:52:24 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:52:55 INFO  LoggingUtil:58 - Manager approved the reimbursement id: 7
+2022-05-11 12:53:25 INFO  LoggingUtil:58 - Manager approved the reimbursement id: 6
+2022-05-11 12:58:12 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 12:58:15 INFO  LoggingUtil:60 - Manager denied the reimbursement id: 6
+2022-05-11 13:53:05 INFO  LoggingUtil:44 - User: bayode123 logged in successfully
+2022-05-11 13:53:11 INFO  LoggingUtil:56 - bayode123 has logged out
+2022-05-11 13:53:24 INFO  LoggingUtil:44 - User: bill76 logged in successfully
+2022-05-11 13:53:50 ERROR LoggingUtil:30 - Username already exists. Choose a different username
+2022-05-11 13:54:44 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 13:55:01 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 13:58:42 INFO  LoggingUtil:44 - User: bill76 logged in successfully
+2022-05-11 13:58:56 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 13:59:48 INFO  LoggingUtil:47 - User: bill76 logged in successfully
+2022-05-11 13:59:51 ERROR LoggingUtil:36 - Email already exists. Choose a different email

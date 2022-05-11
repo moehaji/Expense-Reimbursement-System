@@ -20,7 +20,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
                 "reimbursement_author, reimbursement_resolver, reimbursement_status, reimbursement_type) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?)";
 
-
         try {
             PreparedStatement ps = c.prepareStatement(sql);
 
@@ -34,6 +33,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
             ps.setInt(8, r.getReimbursementType());
 
             ps.execute();
+
         } catch (SQLException e ) {
             throw new RuntimeException(e);
         }
@@ -107,7 +107,6 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
         Connection c = cs.getConnection();
 
         String sql = "select * from reimbursement where reimbursement_status = ?";
-        Reimbursement r;
         List<Reimbursement> allPendingList = new ArrayList<>();
 
         try {
@@ -119,7 +118,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
 
             if (statusPending == 1) {
                 while(rs.next()){
-                    r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
+                    Reimbursement r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getString(3),
                             rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7),
                             rs.getInt(8), rs.getInt(9));
                     allPendingList.add(r);
@@ -191,7 +190,7 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     }
 
     @Override
-    public void managerUpdateReimbursementStatus(int reimbursementID, int status) {
+    public Reimbursement managerUpdateReimbursementStatus(Reimbursement r, int status) {
         Connection c = cs.getConnection();
 
         String sql = "update reimbursement set reimbursement_status = ? where reimbursement_id = ?";
@@ -200,28 +199,14 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
             PreparedStatement ps = c.prepareStatement(sql);
 
             ps.setInt(1, status);
-            ps.setInt(2, reimbursementID);
+            ps.setInt(2, r.getReimbursementID());
 
             ps.execute();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
 
-//    @Override
-//    public void deleteReimbursement(int reimbursementID) {
-//        Connection c = cs.getConnection();
-//
-//        String sql = "delete from reimbursement where reimbursement_id = ?";
-//
-//        try {
-//            PreparedStatement ps = c.prepareStatement(sql);
-//
-//            ps.setInt(1, reimbursementID);
-//
-//            ps.execute();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        return r;
+    }
 }

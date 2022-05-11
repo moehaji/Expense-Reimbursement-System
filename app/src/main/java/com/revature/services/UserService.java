@@ -23,10 +23,16 @@ public class UserService {
     public User employeeUpdateAccountInformation(User u, int userID) {
         User user = uDao.employeeUpdateAccountInformation(u, userID);
 
+        System.out.println(user.getUserID());
+        System.out.println(user.getUserName());
+
+//        System.out.println(user.);
+//        System.out.println(userID);
+
         if (user.getUserID() == userID) {
             LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
             return user;
-        } else if (u.getUserName().equals(user.getUserName())) {
+        } else if (u.getUserName().equals(user.getUserName()) && userID != user.getUserID()) {
             LoggingUtil.logger.error("Username already exists. Choose a different username");
             return null;
         } else if (u.getEmail().equals(user.getEmail()) && userID != user.getUserID()) {

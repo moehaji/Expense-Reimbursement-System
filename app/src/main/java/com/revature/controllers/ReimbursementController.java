@@ -6,6 +6,8 @@ import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import io.javalin.http.Handler;
 
+import java.util.List;
+
 public class ReimbursementController {
 
     private ObjectMapper oMap;
@@ -32,6 +34,7 @@ public class ReimbursementController {
                 rServ.employeeCreateReimbursement(r.getAmount(), r.getSubmittedDate(), r.getResolvedDate(),
                         r.getDescription(), authorID, r.getReimbursementResolver(),
                         r.getReimbursementStatus(), r.getReimbursementType(), username);
+
                 ctx.status(201);
                 ctx.result("Reimbursement created");
             } else if (role == 2) {
@@ -85,26 +88,100 @@ public class ReimbursementController {
     };
 
     public Handler handleManagerViewAllPendingReimbursements = (ctx) -> {
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(rServ.managerViewAllPendingReimbursements(1)));
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 
     public Handler handleManagerViewAllResolvedReimbursements = (ctx) -> {
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(rServ.managerViewAllResolvedReimbursements(2,3)));
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 
     public Handler handleManagerViewSpecificEmployeeReimbursements = (ctx) -> {
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
+        int authorID = Integer.parseInt(ctx.pathParam("id"));
 
-    };
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
 
-    public Handler handleManagerUpdateReimbursementStatus = (ctx) -> {
-
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(rServ.managerViewSpecificEmployeeReimbursements(authorID)));
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 
     public Handler handleManagerApproveReimbursement = (ctx) -> {
+        Reimbursement r = oMap.readValue(ctx.body(), Reimbursement.class);
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(rServ.managerUpdateReimbursementStatus(r, 2)));
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 
     public Handler handleManagerDenyReimbursement = (ctx) -> {
+        Reimbursement r = oMap.readValue(ctx.body(), Reimbursement.class);
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("Must login to view employees");
+        } else if (loggedIn != null) {
+            int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
+
+            if (role == 1) {
+                ctx.result("Must be a manager");
+            } else if (role == 2) {
+                ctx.result(oMap.writeValueAsString(rServ.managerUpdateReimbursementStatus(r, 3)));
+            } else {
+                throw new IllegalRoleException();
+            }
+        }
     };
 }

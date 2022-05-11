@@ -23,8 +23,9 @@ public class ReimbursementService {
         Reimbursement r = new Reimbursement(0, amount, submittedDate, resolvedDate, description,
                 reimbursementAuthor, reimbursementResolver, reimbursementStatus, reimbursementType);
 
-        rDao.employeeCreateReimbursement(r);
         LoggingUtil.logger.info("Employee with username: " + username + ", created a new reimbursement request" );
+
+        rDao.employeeCreateReimbursement(r);
     }
 
     public List<Reimbursement> employeeViewPendingReimbursements(int authorID, int statusPending, String username) {
@@ -52,20 +53,13 @@ public class ReimbursementService {
         return rDao.managerViewSpecificEmployeeReimbursements(authorID);
     }
 
-    public void managerUpdateReimbursementStatus(int reimbursementID, int status) {
+    public Reimbursement managerUpdateReimbursementStatus(Reimbursement r, int status) {
         if (status == 2) {
-            LoggingUtil.logger.info("Manager approved the reimbursement id: " + reimbursementID);
+            LoggingUtil.logger.info("Manager approved the reimbursement id: " + r.getReimbursementID());
         } else if (status == 3) {
-            LoggingUtil.logger.info("Manager denied the reimbursement id: " + reimbursementID);
+            LoggingUtil.logger.info("Manager denied the reimbursement id: " + r.getReimbursementID());
         }
-        rDao.managerUpdateReimbursementStatus(reimbursementID, status);
-    }
 
-    public void managerApproveReimbursement() {
-
-    }
-
-    public void managerDenyReimbursement() {
-
+        return rDao.managerUpdateReimbursementStatus(r, status);
     }
 }
