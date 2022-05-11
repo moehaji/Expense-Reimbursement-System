@@ -1,0 +1,6 @@
+2022-05-11 17:21:56 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-11 17:49:27 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-11 17:50:01 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-11 17:52:30 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-11 17:56:13 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-11 17:56:13 INFO  LoggingUtil:44 - User: john123 logged in successfully

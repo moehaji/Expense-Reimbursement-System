@@ -95,3 +95,22 @@
 2022-05-11 13:58:56 ERROR LoggingUtil:33 - Email already exists. Choose a different email
 2022-05-11 13:59:48 INFO  LoggingUtil:47 - User: bill76 logged in successfully
 2022-05-11 13:59:51 ERROR LoggingUtil:36 - Email already exists. Choose a different email
+2022-05-11 15:43:31 INFO  LoggingUtil:50 - User: bill76 logged in successfully
+2022-05-11 15:43:45 ERROR LoggingUtil:39 - Email already exists. Choose a different email
+2022-05-11 15:45:53 ERROR LoggingUtil:36 - Username already exists. Choose a different username
+2022-05-11 15:46:22 ERROR LoggingUtil:36 - Username already exists. Choose a different username
+2022-05-11 15:55:38 ERROR LoggingUtil:50 - User: bill76 was not found in the database
+2022-05-11 15:55:56 INFO  LoggingUtil:44 - User: bill36 logged in successfully
+2022-05-11 15:57:19 ERROR LoggingUtil:30 - Username already exists. Choose a different username
+2022-05-11 15:58:28 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 15:58:49 INFO  LoggingUtil:27 - User: bill37 updated their account information
+2022-05-11 15:59:38 INFO  LoggingUtil:27 - User: bill37 updated their account information
+2022-05-11 15:59:56 INFO  LoggingUtil:56 - bill36 has logged out
+2022-05-11 16:00:03 ERROR LoggingUtil:50 - User: bill36 was not found in the database
+2022-05-11 16:00:29 INFO  LoggingUtil:44 - User: bill37 logged in successfully
+2022-05-11 16:00:36 INFO  LoggingUtil:27 - User: bill37 updated their account information
+2022-05-11 16:00:53 INFO  LoggingUtil:27 - User: bill37 updated their account information
+2022-05-11 16:33:39 INFO  LoggingUtil:44 - User: bill37 logged in successfully
+2022-05-11 16:34:03 ERROR LoggingUtil:30 - Username already exists. Choose a different username
+2022-05-11 16:34:17 ERROR LoggingUtil:33 - Email already exists. Choose a different email
+2022-05-11 16:36:13 INFO  LoggingUtil:27 - User: bill37 updated their account information

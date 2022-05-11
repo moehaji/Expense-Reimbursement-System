@@ -111,6 +111,8 @@ public class UserDaoJDBC implements IUserDao {
             ps.setInt(6, userID);
 
             ps.execute();
+
+            u.setUserID(userID);
             return u;
         } catch (SQLException e) {
             e.printStackTrace();

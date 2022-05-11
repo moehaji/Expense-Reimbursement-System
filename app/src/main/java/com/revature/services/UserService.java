@@ -23,12 +23,6 @@ public class UserService {
     public User employeeUpdateAccountInformation(User u, int userID) {
         User user = uDao.employeeUpdateAccountInformation(u, userID);
 
-        System.out.println(user.getUserID());
-        System.out.println(user.getUserName());
-
-//        System.out.println(user.);
-//        System.out.println(userID);
-
         if (user.getUserID() == userID) {
             LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
             return user;
@@ -59,6 +53,7 @@ public class UserService {
     }
 
     public void logout(String username) {
+
         LoggingUtil.logger.info(username + " has logged out");
     }
 }
