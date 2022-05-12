@@ -17,6 +17,22 @@ public class UserController {
         this.oMap = new ObjectMapper();
     }
 
+    public Handler handleLogin = (ctx) -> {
+        LoginObject lo = oMap.readValue(ctx.body(), LoginObject.class);
+        User u = uServ.login(lo.username, lo.password);
+
+        if (u == null) {
+            ctx.status(403);
+            ctx.result("Username or password was incorrect");
+        } else {
+            ctx.req.getSession().setAttribute("loggedIn", ""+u.getEmail());
+            ctx.req.getSession().setAttribute("role", ""+u.getRole());
+            ctx.req.getSession().setAttribute("username", ""+u.getUserName());
+            ctx.req.getSession().setAttribute("userID", ""+u.getUserID());
+            ctx.result(oMap.writeValueAsString(u));
+        }
+    };
+
     public Handler handleManagerViewAllEmployees = (ctx) -> {
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
@@ -62,22 +78,6 @@ public class UserController {
         }
     };
 
-    public Handler handleLogin = (ctx) -> {
-        LoginObject lo = oMap.readValue(ctx.body(), LoginObject.class);
-        User u = uServ.login(lo.username, lo.password);
-
-        if (u == null) {
-            ctx.status(403);
-            ctx.result("Username or password was incorrect");
-        } else {
-            ctx.req.getSession().setAttribute("loggedIn", ""+u.getEmail());
-            ctx.req.getSession().setAttribute("role", ""+u.getRole());
-            ctx.req.getSession().setAttribute("username", ""+u.getUserName());
-            ctx.req.getSession().setAttribute("userID", ""+u.getUserID());
-            ctx.result(oMap.writeValueAsString(u));
-        }
-    };
-
     public Handler handleLogout = (ctx) -> {
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         String username = (String) ctx.req.getSession().getAttribute("username");
@@ -86,7 +86,6 @@ public class UserController {
             ctx.status(401);
             ctx.result("You must first login");
         } else if (loggedIn != null) {
-            boolean isLoggedOut = uServ.logout(username);
             ctx.req.getSession().setAttribute("loggedIn", null);
             ctx.req.getSession().setAttribute("role", null);
             ctx.req.getSession().setAttribute("username", null);

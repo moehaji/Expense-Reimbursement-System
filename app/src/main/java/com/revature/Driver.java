@@ -12,6 +12,8 @@ import com.revature.dao.UserDaoJDBC;
 import com.revature.services.ReimbursementService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
+
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Driver {
@@ -26,9 +28,12 @@ public class Driver {
         ReimbursementController rCon = new ReimbursementController(rServ);
 
         Javalin server = Javalin.create(config -> {
+            config.addStaticFiles("/public", Location.CLASSPATH);
             config.enableCorsForAllOrigins();
         });
 
+        server.before(ctx -> ctx.header("Access-Control-Allow-Credentials", "true"));
+        server.before(ctx -> ctx.header("Access-Control-Expose-Headers", "*"));
         server.routes(()-> {
             path("user", () -> {
                 post("/login", uCon.handleLogin);

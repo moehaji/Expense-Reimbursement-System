@@ -71,28 +71,6 @@ public class UserDaoJDBC implements IUserDao {
     public User employeeUpdateAccountInformation(User u, int userID) {
         Connection c = cs.getConnection();
 
-        String sqlStatement = "select * from users";
-
-        try {
-            PreparedStatement ps = c.prepareStatement(sqlStatement);
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6),
-                        rs.getInt(7));
-
-                if(user.getUserName().equals(u.getUserName()) && userID != user.getUserID()) {
-                    return user;
-                } else if (user.getEmail().equals(u.getEmail()) && userID != user.getUserID()) {
-                    return user;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         String sql = "update users " +
                      "set username = ?, " +
                      "password = ?," +

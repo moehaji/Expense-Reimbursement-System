@@ -15,27 +15,6 @@ public class UserService {
         this.uDao = uDao;
     }
 
-    public List<User> managerViewAllEmployees() {
-        LoggingUtil.logger.info("Manager viewed all employees");
-        return uDao.managerViewAllEmployees();
-    }
-
-    public User employeeUpdateAccountInformation(User u, int userID) {
-        User user = uDao.employeeUpdateAccountInformation(u, userID);
-
-        if (user.getUserID() == userID) {
-            LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
-            return user;
-        } else if (u.getUserName().equals(user.getUserName()) && userID != user.getUserID()) {
-            LoggingUtil.logger.error("Username already exists. Choose a different username");
-            return null;
-        } else if (u.getEmail().equals(user.getEmail()) && userID != user.getUserID()) {
-            LoggingUtil.logger.error("Email already exists. Choose a different email");
-            return null;
-        }
-        return null;
-    }
-
     public User login(String username, String password) {
         User u = uDao.employeeViewAccountInformation(username);
 
@@ -52,9 +31,20 @@ public class UserService {
         return null;
     }
 
-    public boolean logout(String username) {
+    public List<User> managerViewAllEmployees() {
+        LoggingUtil.logger.info("Manager viewed all employees");
+        return uDao.managerViewAllEmployees();
+    }
 
-        LoggingUtil.logger.info(username + " has logged out");
-        return true;
+    public User employeeUpdateAccountInformation(User u, int userID) {
+        User user = uDao.employeeUpdateAccountInformation(u, userID);
+
+        if (user != null) {
+            LoggingUtil.logger.info("User: " + u.getUserName() + " updated their account information");
+            return user;
+        } else {
+            LoggingUtil.logger.info("Username or password already exists " + u.getUserName());
+            return null;
+        }
     }
 }

@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import com.revature.dao.IUserDao;
-import com.revature.exceptions.UsernameOrPasswordIncorrectException;
 import com.revature.models.User;
 import org.mockito.MockitoAnnotations;
-
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -25,23 +25,6 @@ public class UserServiceTest {
     public void setupBeforeMethods(){
         System.out.println("This runs once before each method in this class");
         MockitoAnnotations.openMocks(this);
-    }
-
-    @Test
-    public void verifyEmployeeCanUpdateEmailTest() {
-
-        // Given
-        User u = new User(3, "john123", "password", "John",
-                "Smith", "john@mail.com", 1);
-
-        // When
-        when(uDao.employeeUpdateAccountInformation(u, 3)).thenReturn(u);
-
-        User updatedUser = uServ.employeeUpdateAccountInformation(u, 3);
-        verify(uDao).employeeUpdateAccountInformation(u, u.getUserID());
-
-        // Then
-        assertEquals("Updated to: john@l.com", "smith@mail.com", updatedUser.getEmail());
     }
 
     @Test
@@ -95,18 +78,51 @@ public class UserServiceTest {
     }
 
     @Test
-    public void verifyLogoutTest() {
+    public void verifyManagerCanViewAllEmployeesTest() {
+
+        // Given
+        List<User> allEmployees = new ArrayList<>();
+        User u = new User(3, "john123", "password", "John",
+                "Smith", "john@mail.com", 1);
+        allEmployees.add(u);
+
+        // When
+        when(uDao.managerViewAllEmployees()).thenReturn(allEmployees);
+
+        List<User> allEmployeeList = uServ.managerViewAllEmployees();
+        verify(uDao).managerViewAllEmployees();
+
+        // Then
+        assertEquals("Manager viewed all employees", allEmployees, allEmployeeList);
+    }
+
+    @Test
+    public void verifyEmployeeCanUpdateEmailTest() {
 
         // Given
         User u = new User(3, "john123", "password", "John",
                 "Smith", "john@mail.com", 1);
 
-        // When
-        when(uDao.employeeViewAccountInformation(any())).thenReturn(u);
+        u.setEmail("smith@mail.com");
 
-        boolean isLoggedOut = uServ.logout("john123");
+        // When
+        when(uDao.employeeUpdateAccountInformation(u, 3)).thenReturn(u);
+
+        User updatedUser = uServ.employeeUpdateAccountInformation(u, 3);
+        verify(uDao).employeeUpdateAccountInformation(u, u.getUserID());
 
         // Then
-        assertTrue("User logged out", isLoggedOut);
+        assertEquals("User updated their email", u, updatedUser);
+    }
+
+    @Test (expected=Exception.class)
+    public void verifyCanNotUpdateUsernameOrEmailThatAlreadyExistsTest() {
+        // Given
+        User u = null;
+
+        // When
+        when(uDao.employeeUpdateAccountInformation(any(), any())).thenReturn(u);
+
+        verify(uDao).employeeUpdateAccountInformation(any(), any());
     }
 }

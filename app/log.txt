@@ -17,3 +17,120 @@
 2022-05-12 08:46:11 ERROR LoggingUtil:47 - Username or password was incorrect
 2022-05-12 08:59:15 INFO  LoggingUtil:57 - john123 has logged out
 2022-05-12 09:13:13 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-12 09:42:21 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 09:42:52 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 09:44:10 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 09:44:39 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 09:44:39 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 09:44:39 INFO  LoggingUtil:57 - john123 has logged out
+2022-05-12 09:44:39 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 09:44:39 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 09:44:39 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 13:45:59 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 13:46:22 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 13:49:30 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 13:49:30 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 13:49:30 INFO  LoggingUtil:57 - john123 has logged out
+2022-05-12 13:49:30 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 13:49:30 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 13:49:30 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 16:45:09 INFO  LoggingUtil:57 - werght has logged out
+2022-05-12 16:46:45 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 16:46:45 INFO  LoggingUtil:57 - werght has logged out
+2022-05-12 16:46:56 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 16:46:56 INFO  LoggingUtil:57 - werght has logged out
+2022-05-12 16:50:27 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 16:50:27 INFO  LoggingUtil:57 - werght has logged out
+2022-05-12 17:16:12 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:16:59 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:17:26 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:18:56 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:21:03 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:21:42 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 17:21:42 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 17:21:42 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:21:42 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:21:42 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 17:21:42 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 17:21:42 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:23:27 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:23:39 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:24:58 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:25:24 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:29:18 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 17:47:42 INFO  LoggingUtil:26 - Employee with username: Bill, created a new reimbursement request
+2022-05-12 17:52:40 INFO  LoggingUtil:26 - Employee with username: Bill, created a new reimbursement request
+2022-05-12 17:53:21 INFO  LoggingUtil:26 - Employee with username: Bill, created a new reimbursement request
+2022-05-12 18:07:00 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:07:00 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:07:00 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:07:00 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:07:00 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:07:00 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 18:07:00 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:14:37 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:14:37 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:14:37 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:14:37 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:14:37 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 18:17:05 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:34:38 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:34:39 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:34:39 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:34:39 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:34:39 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 18:35:55 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:35:55 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:35:55 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:35:55 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:35:55 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 18:45:18 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:45:19 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:45:19 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:45:19 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:45:19 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 18:46:35 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 18:46:35 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 18:46:35 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 18:46:35 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 18:46:35 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 19:00:57 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 19:00:57 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 19:00:57 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 19:00:57 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 19:00:57 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 19:10:54 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 19:10:54 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 19:10:54 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 19:10:54 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 19:10:54 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-12 19:26:05 INFO  LoggingUtil:32 - Employee with username: bill, viewed their pending reimbursements
+2022-05-12 19:26:37 INFO  LoggingUtil:32 - Employee with username: bill, viewed their pending reimbursements
+2022-05-12 19:26:52 INFO  LoggingUtil:32 - Employee with username: bill, viewed their pending reimbursements
+2022-05-12 19:29:58 INFO  LoggingUtil:37 - Employee with username: bill, viewed their resolved reimbursements
+2022-05-12 19:32:02 INFO  LoggingUtil:37 - Employee with username: bill, viewed their resolved reimbursements
+2022-05-12 19:33:53 INFO  LoggingUtil:42 - Manager viewed all pending reimbursements
+2022-05-12 19:34:12 INFO  LoggingUtil:42 - Manager viewed all pending reimbursements
+2022-05-12 19:36:57 INFO  LoggingUtil:47 - Manager viewed all resolved reimbursements
+2022-05-12 19:38:26 INFO  LoggingUtil:42 - Manager viewed all pending reimbursements
+2022-05-12 19:41:43 INFO  LoggingUtil:60 - Manager denied the reimbursement id: 1
+2022-05-12 19:42:39 INFO  LoggingUtil:60 - Manager denied the reimbursement id: 1
+2022-05-12 19:42:50 INFO  LoggingUtil:47 - Manager viewed all resolved reimbursements
+2022-05-12 19:42:50 INFO  LoggingUtil:60 - Manager denied the reimbursement id: 1
+2022-05-12 19:42:50 INFO  LoggingUtil:52 - Manager viewed all the reimbursements of user with id: 1
+2022-05-12 19:42:50 INFO  LoggingUtil:37 - Employee with username: bill, viewed their resolved reimbursements
+2022-05-12 19:42:50 INFO  LoggingUtil:42 - Manager viewed all pending reimbursements
+2022-05-12 19:42:50 INFO  LoggingUtil:32 - Employee with username: bill, viewed their pending reimbursements
+2022-05-12 19:42:50 INFO  LoggingUtil:26 - Employee with username: Bill, created a new reimbursement request
+2022-05-12 19:48:54 INFO  LoggingUtil:47 - Manager viewed all resolved reimbursements
+2022-05-12 19:48:54 INFO  LoggingUtil:60 - Manager denied the reimbursement id: 1
+2022-05-12 19:48:54 INFO  LoggingUtil:52 - Manager viewed all the reimbursements of user with id: 1
+2022-05-12 19:48:54 INFO  LoggingUtil:37 - Employee with username: bill, viewed their resolved reimbursements
+2022-05-12 19:48:54 INFO  LoggingUtil:42 - Manager viewed all pending reimbursements
+2022-05-12 19:48:54 INFO  LoggingUtil:32 - Employee with username: bill, viewed their pending reimbursements
+2022-05-12 19:48:54 INFO  LoggingUtil:26 - Employee with username: Bill, created a new reimbursement request
+2022-05-12 19:49:19 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-12 19:49:19 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-12 19:49:19 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-12 19:49:19 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-12 19:49:19 INFO  LoggingUtil:23 - User: john123 logged in successfully
