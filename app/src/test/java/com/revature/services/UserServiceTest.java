@@ -1,96 +1,112 @@
 package com.revature.services;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import com.revature.dao.IUserDao;
 import com.revature.exceptions.UsernameOrPasswordIncorrectException;
 import com.revature.models.User;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.*;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 public class UserServiceTest {
 
-    //We realize that UserService has a dependency UserDao, we need to not rely on this and only test the service
-    //So we will use mocking to get rid of this
     @Mock
-    static IUserDao ud;
+    static IUserDao uDao;
 
-    //We also have to use inject mocks, because UserService depends on UserDao
     @InjectMocks
-    static UserService us;
+    static UserService uServ;
 
-    //Before will run once before every method in this class
     @Before
     public void setupBeforeMethods(){
         System.out.println("This runs once before each method in this class");
         MockitoAnnotations.openMocks(this);
     }
 
-    //Lets test a positive login case
     @Test
-    public void validLoginCredentialsTest() throws UsernameOrPasswordIncorrectException {
+    public void verifyEmployeeCanUpdateEmailTest() {
+
+        // Given
         User u = new User(3, "john123", "password", "John",
                 "Smith", "john@mail.com", 1);
 
-        //When our dao method gets called, instead of searching the database for a user, we will
-        //return the precreated used above
-        when(ud.employeeViewAccountInformation(any())).thenReturn(u);
+        // When
+        when(uDao.employeeUpdateAccountInformation(u, 3)).thenReturn(u);
 
-        User loggedIn = us.login("john123", "password");
-        verify(ud).employeeViewAccountInformation(any());
+        User updatedUser = uServ.employeeUpdateAccountInformation(u, 3);
+        verify(uDao).employeeUpdateAccountInformation(u, u.getUserID());
 
-        //AssertEquals takes in three values
-        //Message, Expected, Actual
-        assertEquals("The username should be: john123", "john123", loggedIn.getUserName());
-        //Then we could write more assertEquals for each of our user properties of our User
+        // Then
+        assertEquals("Updated to: john@l.com", "smith@mail.com", updatedUser.getEmail());
     }
 
     @Test
-    public void verifyEmployeeCanUpdateEmail() {
+    public void validLoginCredentialsTest() {
+
+        // Given
         User u = new User(3, "john123", "password", "John",
-                "Smith", "john@l.com", 1);
+                "Smith", "john@mail.com", 1);
 
-        //When our dao method gets called, instead of searching the database for a user, we will
-        //return the precreated used above
-        when(ud.employeeUpdateAccountInformation(u, u.getUserID())).thenReturn(u);
+        // When
+        when(uDao.employeeViewAccountInformation(u.getUserName())).thenReturn(u);
 
-        User updatedUser = us.employeeUpdateAccountInformation(u, 3);
-        verify(ud).employeeUpdateAccountInformation(u, u.getUserID());
+        User loggedIn = uServ.login("john123", "password");
+        verify(uDao).employeeViewAccountInformation(u.getUserName());
 
-        //AssertEquals takes in three values
-        //Message, Expected, Actual
-        assertEquals("Updated to: john@l.com", "john@l.com", updatedUser.getEmail());
-
+        // Then
+        assertEquals("The username should be: john123", u, loggedIn);
     }
 
     @Test
-    public void verifyLogout() {
+    public void wrongUsernameLoginCredentialsTest() {
+
+        // Given
+        User u = null;
+
+        // When
+        when(uDao.employeeViewAccountInformation(any())).thenReturn(u);
+
+        User loggedIn = uServ.login("john123", "password");
+
+        // Then
+        // Username is not correct and couldn't retrieve someone from the mock database
+        assertEquals("The username is incorrect", null, loggedIn);
+    }
+
+    @Test
+    public void wrongPasswordLoginCredentialsTest() {
+
+        // Given
         User u = new User(3, "john123", "password", "John",
-                "Smith", "john@l.com", 1);
+                "Smith", "john@mail.com", 1);
 
-        //When our dao method gets called, instead of searching the database for a user, we will
-        //return the precreated used above
-        when(ud.employeeViewAccountInformation(any())).thenReturn(u);
+        // When
+        when(uDao.employeeViewAccountInformation(any())).thenReturn(u);
 
-        us.logout("john123");
-        verify(ud).employeeUpdateAccountInformation(u, u.getUserID());
+        User loggedIn = uServ.login("john123", "passw");
+        verify(uDao).employeeViewAccountInformation(u.getUserName());
 
-        assertTrue("Did user log out", us.logout("john123"));
+        // Then
+        assertEquals("The password is incorrect", null, loggedIn);
+    }
 
-        //AssertEquals takes in three values
-        //Message, Expected, Actual
-        assertEquals("Updated to: john@l.com", "john@l.com", updatedUser.getEmail());
+    @Test
+    public void verifyLogoutTest() {
 
+        // Given
+        User u = new User(3, "john123", "password", "John",
+                "Smith", "john@mail.com", 1);
+
+        // When
+        when(uDao.employeeViewAccountInformation(any())).thenReturn(u);
+
+        boolean isLoggedOut = uServ.logout("john123");
+
+        // Then
+        assertTrue("User logged out", isLoggedOut);
     }
 }

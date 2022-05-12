@@ -86,7 +86,7 @@ public class UserController {
             ctx.status(401);
             ctx.result("You must first login");
         } else if (loggedIn != null) {
-            uServ.logout(username);
+            boolean isLoggedOut = uServ.logout(username);
             ctx.req.getSession().setAttribute("loggedIn", null);
             ctx.req.getSession().setAttribute("role", null);
             ctx.req.getSession().setAttribute("username", null);

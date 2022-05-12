@@ -4,3 +4,16 @@
 2022-05-11 17:52:30 INFO  LoggingUtil:27 - User: john123 updated their account information
 2022-05-11 17:56:13 INFO  LoggingUtil:27 - User: john123 updated their account information
 2022-05-11 17:56:13 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-12 08:23:07 INFO  LoggingUtil:27 - User: john123 updated their account information
+2022-05-12 08:23:25 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-12 08:25:11 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-12 08:29:07 ERROR LoggingUtil:50 - User: joe was not found in the database
+2022-05-12 08:30:15 ERROR LoggingUtil:50 - User: joe was not found in the database
+2022-05-12 08:30:51 ERROR LoggingUtil:47 - Username or password was incorrect
+2022-05-12 08:31:17 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-12 08:36:14 ERROR LoggingUtil:50 - User: john123 was not found in the database
+2022-05-12 08:38:02 ERROR LoggingUtil:50 - User: john123 was not found in the database
+2022-05-12 08:42:55 INFO  LoggingUtil:44 - User: john123 logged in successfully
+2022-05-12 08:46:11 ERROR LoggingUtil:47 - Username or password was incorrect
+2022-05-12 08:59:15 INFO  LoggingUtil:57 - john123 has logged out
+2022-05-12 09:13:13 INFO  LoggingUtil:27 - User: john123 updated their account information

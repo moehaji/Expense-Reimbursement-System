@@ -52,8 +52,9 @@ public class UserService {
         return null;
     }
 
-    public void logout(String username) {
+    public boolean logout(String username) {
 
         LoggingUtil.logger.info(username + " has logged out");
+        return true;
     }
 }
