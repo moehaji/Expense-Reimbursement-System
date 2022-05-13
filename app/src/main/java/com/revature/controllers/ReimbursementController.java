@@ -6,8 +6,6 @@ import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import io.javalin.http.Handler;
 
-import java.util.List;
-
 public class ReimbursementController {
 
     private ObjectMapper oMap;
@@ -46,6 +44,8 @@ public class ReimbursementController {
     };
 
     public Handler handleEmployeeViewPendingReimbursements = (ctx) -> {
+        ctx.header("Access-Control-Expose-Headers", "*");
+
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
         String username = (String) ctx.req.getSession().getAttribute("username");
@@ -67,6 +67,8 @@ public class ReimbursementController {
     };
 
     public Handler handleEmployeeViewResolvedReimbursements = (ctx) -> {
+        ctx.header("Access-Control-Expose-Headers", "*");
+
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
         String username = (String) ctx.req.getSession().getAttribute("username");
@@ -88,6 +90,8 @@ public class ReimbursementController {
     };
 
     public Handler handleManagerViewAllPendingReimbursements = (ctx) -> {
+        ctx.header("Access-Control-Expose-Headers", "*");
+
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
         if (loggedIn == null) {
@@ -107,6 +111,8 @@ public class ReimbursementController {
     };
 
     public Handler handleManagerViewAllResolvedReimbursements = (ctx) -> {
+        ctx.header("Access-Control-Expose-Headers", "*");
+
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
 
         if (loggedIn == null) {
@@ -126,6 +132,8 @@ public class ReimbursementController {
     };
 
     public Handler handleManagerViewSpecificEmployeeReimbursements = (ctx) -> {
+        ctx.header("Access-Control-Expose-Headers", "*");
+
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         int authorID = Integer.parseInt(ctx.pathParam("id"));
 

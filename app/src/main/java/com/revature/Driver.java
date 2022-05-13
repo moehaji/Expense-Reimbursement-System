@@ -13,7 +13,6 @@ import com.revature.services.ReimbursementService;
 import com.revature.services.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
-
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class Driver {

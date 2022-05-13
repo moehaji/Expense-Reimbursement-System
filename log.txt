@@ -114,3 +114,4 @@
 2022-05-11 16:34:03 ERROR LoggingUtil:30 - Username already exists. Choose a different username
 2022-05-11 16:34:17 ERROR LoggingUtil:33 - Email already exists. Choose a different email
 2022-05-11 16:36:13 INFO  LoggingUtil:27 - User: bill37 updated their account information
+2022-05-13 14:47:31 INFO  LoggingUtil:23 - User: bill37 logged in successfully

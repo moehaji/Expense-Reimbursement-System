@@ -134,3 +134,8 @@
 2022-05-12 19:49:19 INFO  LoggingUtil:43 - User: john123 updated their account information
 2022-05-12 19:49:19 ERROR LoggingUtil:26 - Username or password was incorrect
 2022-05-12 19:49:19 INFO  LoggingUtil:23 - User: john123 logged in successfully
+2022-05-13 14:44:27 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-13 14:44:27 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-13 14:44:27 INFO  LoggingUtil:43 - User: john123 updated their account information
+2022-05-13 14:44:27 ERROR LoggingUtil:26 - Username or password was incorrect
+2022-05-13 14:44:27 INFO  LoggingUtil:23 - User: john123 logged in successfully
