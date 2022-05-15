@@ -88,11 +88,11 @@ public class UserController {
             ctx.status(401);
             ctx.result("You must first login");
         } else if (loggedIn != null) {
-            ctx.req.getSession().invalidate();
-//            ctx.req.getSession().setAttribute("loggedIn", null);
-//            ctx.req.getSession().setAttribute("role", null);
-//            ctx.req.getSession().setAttribute("username", null);
-//            ctx.req.getSession().setAttribute("userID", null);
+            //ctx.req.getSession().invalidate();
+            ctx.req.getSession().setAttribute("loggedIn", null);
+            ctx.req.getSession().setAttribute("role", null);
+            ctx.req.getSession().setAttribute("username", null);
+            ctx.req.getSession().setAttribute("userID", null);
             ctx.result("Logged out");
         }
     };

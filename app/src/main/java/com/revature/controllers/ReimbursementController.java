@@ -17,6 +17,7 @@ public class ReimbursementController {
     }
 
     public Handler handleEmployeeCreateReimbursement = (ctx) -> {
+        //ctx.header("Access-Control-Expose-Headers", "*");
         Reimbursement r = oMap.readValue(ctx.body(), Reimbursement.class);
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         String username = (String) ctx.req.getSession().getAttribute("username");

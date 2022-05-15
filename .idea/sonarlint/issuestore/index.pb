@@ -1,8 +1,6 @@
 
 n
 >app/src/main/java/com/revature/models/ReimbursementStatus.java,c/3/c30fddb0439f58ca7b412c2eda9ea7d84858f8d8
-l
-<app/src/main/java/com/revature/models/ReimbursementType.java,9/0/909e8eed50690cb1723178bf35564ef65db291b9
 d
 4app/src/main/java/com/revature/models/UserRoles.java,c/1/c19be3ad41d57f27875b11da67bbbf0d1269675d
 @
@@ -26,10 +24,6 @@ b
 2expensereimbursementsystem-redux/package-lock.json,9/7/97796e251da17f222acf669f94208f032808eec0
 l
 <app/src/main/java/com/revature/dao/ReimbursementDaoJDBC.java,b/0/b0f785fce5d4373ded76c7aa2b33a7950af26d88
-u
-Eapp/src/test/java/com/revature/services/ReimbursementServiceTest.java,4/b/4b668b345dc985f53c1b671d1390aa95053f9bad
-l
-<app/src/test/java/com/revature/services/UserServiceTest.java,9/0/90c12a429bc36caa34aa3aeae4b98ae997ea191a
 q
 Aapp/src/main/java/com/revature/services/ReimbursementService.java,b/5/b5b01d63b4f1b0a7a33078af8929639f7335c6f1
 h
