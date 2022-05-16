@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Background: #fcfdfc (Off white)
 Text: #252424 (Dark)
 Nav header: #ffffff (White)
 Button: #6157c3 (Purple)
 Text boxes: #cccccc (Light gray)
+=======
+BG: #2D2E2E
+Black: #0F0F0F
+Button Color: #3891A6
+Accent: #23CE6B
+Offwhite/text: #FBFBFB
+>>>>>>> mohamed-frontend
