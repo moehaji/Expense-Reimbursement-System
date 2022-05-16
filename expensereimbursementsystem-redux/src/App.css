@@ -1,0 +1,11 @@
+:root {
+    --bg: #fcfdfc;
+    --text: #252424;
+    --nav-white: #ffffff;
+    --btn-purple: #6157c3;
+    --text-box-gray: #cccccc;
+}
+
+body {
+    background-color: var(--bg);
+}
