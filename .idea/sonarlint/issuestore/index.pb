@@ -30,3 +30,13 @@ h
 8app/src/main/java/com/revature/services/UserService.java,b/5/b5e8c4c17cbb187f9ad7c9746663ba464af025e1
 c
 3app/src/main/java/com/revature/dao/UserDaoJDBC.java,6/9/69d68631c1757d721413edd21cb29cbda44586ce
+u
+Eapp/src/test/java/com/revature/services/ReimbursementServiceTest.java,4/b/4b668b345dc985f53c1b671d1390aa95053f9bad
+l
+<app/src/test/java/com/revature/services/UserServiceTest.java,9/0/90c12a429bc36caa34aa3aeae4b98ae997ea191a
+l
+<app/src/main/java/com/revature/models/ReimbursementType.java,9/0/909e8eed50690cb1723178bf35564ef65db291b9
+n
+>app/src/main/java/com/revature/controllers/UserController.java,c/8/c8efb88e44ba24395badea17949be5e5b7cd6cad
+w
+Gapp/src/main/java/com/revature/controllers/ReimbursementController.java,b/a/ba64792ac5c4f4f64479430ec44433644e2409a4
