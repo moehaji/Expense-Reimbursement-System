@@ -2,6 +2,7 @@
 .gradle
 *.properties
 # **/resources/*.properties
+node_modules
 
 # Ignore Gradle build output directory
 build
