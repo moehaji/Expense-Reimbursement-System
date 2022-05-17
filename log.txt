@@ -115,3 +115,6 @@
 2022-05-11 16:34:17 ERROR LoggingUtil:33 - Email already exists. Choose a different email
 2022-05-11 16:36:13 INFO  LoggingUtil:27 - User: bill37 updated their account information
 2022-05-13 14:47:31 INFO  LoggingUtil:23 - User: bill37 logged in successfully
+2022-05-16 17:31:59 ERROR LoggingUtil:29 - User: bill769 was not found in the database
+2022-05-16 17:32:34 ERROR LoggingUtil:29 - User: john123 was not found in the database
+2022-05-16 17:41:44 INFO  LoggingUtil:23 - User: bill769 logged in successfully

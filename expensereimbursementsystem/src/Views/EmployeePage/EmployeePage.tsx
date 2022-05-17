@@ -13,6 +13,7 @@ export const EmployeePage: React.FC<IUser> = (user:IUser) => {
     const navigator = useNavigate()
 
     const getReimbursements =async () => {
+        axios.defaults.withCredentials = true;
         let res = await axios.get("http://localhost:8080/employee/view-pending-reimbursements")
         setReimbursements(res.data)
         console.log(res.data);
