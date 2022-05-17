@@ -1,0 +1,5 @@
+Background: #fcfdfc (Off white)
+Text: #252424 (Dark)
+Nav header: #ffffff (White)
+Button: #6157c3 (Purple)
+Text boxes: #cccccc (Light gray)

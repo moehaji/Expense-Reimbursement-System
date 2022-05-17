@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+    box-sizing: border-box;
+}
+.employeeGreet {
+    border-radius: 5px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn {
+    margin-right: 25px;
+    cursor: pointer;
+    padding: 38px;
+    border: none;
+    font-family: 'Poppins';
+    font-weight: bold;
+    background-color: #22c48ee5;
+}
+.btn:hover {
+    background-color: #25e4c4;
+    border: none;
+}
+.desc {
+    width: 15%;
+}
+.reimbursement-form {
+        border: solid 2px rgb(71, 61, 61);
+        border-radius: 5px;
+        margin: auto;
+        padding: 20px;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+}
+.reimbursement-form input {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
