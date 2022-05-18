@@ -1,7 +1,7 @@
 export interface IReimbursement {
     reimbursementID: number,
-    amount: number,
-    submittedDate: string,
+    amount: string,
+    submittedDate: Date,
     resolvedDate?: string,
     description: string,
     reimbursementAuthor: number,

@@ -1,77 +1,40 @@
-:root {
-    --bg: #2D2E2E;
-    --dark: #0F0F0F;
-    --btn-blue: #46B1C9;
-    --accent: #23CE6B;
-    --text-white: #FBFBFB;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
-.navbar {
-    background: var(--accent);
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.nav-menu {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 10px;
-    list-style: none;
-    text-align: center;
-    width: 80%;
-    justify-content: end;
-    margin-right: 2rem;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    margin-right: 10px;
-    margin-left: 10px;
-    padding: 20px;
-}
-
-.nav-link {
-    color: var(--dark);
-    font-size: 1.5rem;
+li, a, button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     text-decoration: none;
+    color: white;
+}
+
+.logo-header {
     cursor: pointer;
+    margin-right: auto;
 }
 
-.logout-btn{
-    background-color: var(--btn-blue);
-    border: solid 2px var(--dark);
-    color: var(--dark);
-    font-weight: bold;
-    border-radius: 10px;
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    text-decoration: none;
+.nav-menu li {
     display: inline-block;
-    font-size: 1.2rem;
+    padding: 0px 20px;
+    margin-left: auto;
+}
+
+.nav-menu li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-menu li a:hover {
+    color: #bb9c54;
+}
+
+button {
+    padding: 9px 25px;
+    background-color: rgba(187, 156, 84, 1);
+    border: none;
+    border-radius: 50px;
     cursor: pointer;
-    outline: none;
+    transition: all 0.3s ease 0s;
 }
 
-.logout {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    outline: none;
-}
-
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    object-fit: cover;
+button:hover {
+    background-color: rgba(187, 156, 84, 0.8);
 }
