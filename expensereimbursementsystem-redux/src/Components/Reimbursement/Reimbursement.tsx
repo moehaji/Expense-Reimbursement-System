@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from "react";
-
 import './Reimbursement.css'
-
 import { IReimbursement } from "../../Interfaces/IReimbursement";
 
 export const ReimbursementType = {

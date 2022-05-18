@@ -1,26 +1,14 @@
-import React, {useState, useEffect} from "react";
-import { IUser } from "../../Interfaces/IUser";
-import { IReimbursement } from "../../Interfaces/IReimbursement";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Reimbursement } from "../../Components/Reimbursement/Reimbursement";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../Store";
 
+export const ManagerPage: React.FC = () => {
+    
+    const managerInfo = useSelector((state:RootState) => state.user);
 
-export const ManagerPage: React.FC<IUser> = (user:IUser) => {
-
-    const navigator = useNavigate()
-
-    useEffect(() => {
-        //If the firstName is false, this if statement will equate to true
-        if(user.userID < 0){
-            navigator("/login")
-        }
-    }, [])
-
-    return (
-        <>
-            <h1>Welcome to Manager Page {user.firstName}</h1>
-            <h2>Home page view</h2>
-        </>
-    )
-
+    return(
+        <div>
+            <h1>Welcome: {managerInfo.user?.firstName}</h1>
+        </div>
+    );
 }

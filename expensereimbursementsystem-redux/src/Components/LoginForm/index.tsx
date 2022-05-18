@@ -1,13 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
+import { useDispatch } from "react-redux";
+import { loginUser, toggleError } from "../../Slices/UserSlice";
+import { AppDispatch } from "../../Store";
 
 export const Login: React.FC = () => {
 
-    const handleInput = () => {
+    const [username, setUserName] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const dispatch: AppDispatch = useDispatch();
 
+    const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
+        if(event.target.name === "username") {
+            setUserName(event.target.value);
+        } else {
+            setPassword(event.target.value);
+        }
     }
 
-    const handleLogin = () => {
+    const handleLogin = (event:React.MouseEvent<HTMLButtonElement>) => {
+        let credentials = {
+            username,
+            password
+        };
         
+        dispatch(loginUser(credentials));
     }
 
     return(
@@ -18,8 +34,8 @@ export const Login: React.FC = () => {
 
             <form className="login-form">
                 <div className="input-div">
-                    <h4 className="input-h4">Enter email:</h4>
-                    <input className="login-input" type="text" name="email" placeholder="Email" onChange={handleInput} autoComplete="off" />
+                    <h4 className="input-h4">Enter username:</h4>
+                    <input className="login-input" type="text" name="username" placeholder="Username" autoComplete="off" onChange={handleInput} />
                 </div>
 
                 <div className="input-div">

@@ -1,14 +1,40 @@
-* {
-    box-sizing: border-box;
+:root {
+    --bg: #2D2E2E;
+    --dark: #0F0F0F;
+    --btn-blue: #46B1C9;
+    --accent: #23CE6B;
+    --text-white: #FBFBFB;
 }
-.reimbursement {
-    border: solid 2px rgb(71, 61, 61);
-    border-radius: 5px;
-    margin: auto;
-    margin-bottom: 25px;
-    padding: 20px;
-    width: 80%;
+
+.post{
+    width: 35%;
     display: flex;
-    justify-content: space-evenly;
+    height: fit-content;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid var(--dark);
+    color: var(--text-white);
+}
+
+.post-image {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.post-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.post-user {
+    margin-left: 15px;
+}
+
+.post-content {
+    margin-left: 75px;
+    margin-top: 15px;
 }

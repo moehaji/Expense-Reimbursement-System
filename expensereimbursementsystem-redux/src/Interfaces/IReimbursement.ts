@@ -1,5 +1,3 @@
-import { IUser } from "./IUser"
-
 export interface IReimbursement {
     reimbursementID: number,
     amount: number,
