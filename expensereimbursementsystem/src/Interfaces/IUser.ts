@@ -2,7 +2,7 @@ import { IReimbursement } from "./IReimbursement"
 
 export interface IUser {
     userID: number,
-    username: string,
+    userName: string,
     password?: string,
     firstName: string,
     lastName: string,

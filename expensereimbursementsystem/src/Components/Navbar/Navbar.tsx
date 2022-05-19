@@ -28,9 +28,15 @@ export const Navbar: React.FC = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to={"/home"} className="nav-link">
-            Home
-          </Link>
+          {user?.role === 1 ? (
+            <Link to={"/home"} className="nav-link">
+              Home
+            </Link>
+          ) : (
+            <Link to={"/managerHome"} className="nav-link">
+              Home
+            </Link>
+          )}
         </li>
         <li className="logout">
           <Link to={"/login"} className="nav-link">

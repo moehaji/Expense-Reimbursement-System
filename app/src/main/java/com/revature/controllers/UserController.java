@@ -19,7 +19,7 @@ public class UserController {
 
     public Handler handleLogin = (ctx) -> {
         LoginObject lo = oMap.readValue(ctx.body(), LoginObject.class);
-        User u = uServ.login(lo.username, lo.password);
+        User u = uServ.login(lo.userName, lo.password);
 
         if (u == null) {
             ctx.status(403);

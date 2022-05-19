@@ -6,17 +6,27 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../../Components/Loading/Loading";
 import { Reimbursement } from "../../Components/Reimbursement/Reimbursement";
 import { IReimbursement } from "../../Interfaces/IReimbursement";
+import { IUser } from "../../Interfaces/IUser";
+import { Employee } from "../../Components/Employee/Employee";
+import { AppDispatch } from "../../Store";
+import { useDispatch } from "react-redux";
+import { getReimbursementsByID } from "../../Slices/UserSlice";
+
 import axios from "axios";
 import "./ManagerPage.css";
 
 export const ManagerPage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);
   const navigator = useNavigate();
+  const [userID, setUserID] = useState<any>();
   const [reimbursements, setReimbursements] = useState<IReimbursement[]>([]);
+  const [employees, setEmployees] = useState<IUser[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [showPending, setShowPending] = useState(false);
   const [showResolved, setShowResolved] = useState(false);
   const [showAllEmployees, setShowAllEmployees] = useState(false);
+  const [showReimbursementsByID, setShowReimbursementsByID] = useState(false);
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     //If the user is not logged in, push them to the login page
@@ -35,17 +45,15 @@ export const ManagerPage: React.FC = () => {
     setShowForm(!showForm);
     setShowResolved(false);
     setShowPending(false);
-  };
-
-  const sendToDatabase = async () => {
-    axios.defaults.withCredentials = true;
-    let res = await axios.post("http://localhost:8080/reimbursement/create");
-    setReimbursements(res.data);
+    setShowAllEmployees(false);
+    setShowReimbursementsByID(false);
   };
 
   const getAllPendingReimbursements = async () => {
     setShowResolved(false);
     setShowForm(false);
+    setShowAllEmployees(false);
+    setShowReimbursementsByID(false);
     setShowPending(!showPending);
     axios.defaults.withCredentials = true;
     let res = await axios.get(
@@ -57,6 +65,8 @@ export const ManagerPage: React.FC = () => {
   const getAllResolvedReimbursements = async () => {
     setShowPending(false);
     setShowForm(false);
+    setShowAllEmployees(false);
+    setShowReimbursementsByID(false);
     setShowResolved(!showResolved);
     axios.defaults.withCredentials = true;
     let res = await axios.get(
@@ -70,22 +80,39 @@ export const ManagerPage: React.FC = () => {
     setShowPending(false);
     setShowResolved(false);
     setShowForm(false);
+    setShowReimbursementsByID(false);
     setShowAllEmployees(!showAllEmployees);
     axios.defaults.withCredentials = true;
     let res = await axios.get("http://localhost:8080/manager/view-employees");
-    setReimbursements(res.data);
+    setEmployees(res.data);
     console.log(res.data);
+  };
+
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserID(event.target.value);
+  };
+
+  const handleGetReimbursementByID = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    setShowReimbursementsByID(!showReimbursementsByID);
+    setShowForm(false);
+
+    dispatch(getReimbursementsByID(userID));
   };
 
   return (
     <>
       <Navbar />
       <div className="employeeGreet">
-        <h1>Welcome Manager: {userInfo.user?.firstName}</h1>
-        <h2>Reimbursements</h2>
+        <h1 className="greeting-header">
+          Welcome Manager: {userInfo.user?.firstName}
+        </h1>
+        <h2 className="greeting-header">Reimbursements</h2>
         <div className="btn-group">
           <button className="btn" onClick={createReimbursement}>
-            Create A New Reimbursement
+            View Reimbursement by Employee
           </button>
           <button className="btn" onClick={getAllPendingReimbursements}>
             View All Pending Reimbursements
@@ -105,7 +132,6 @@ export const ManagerPage: React.FC = () => {
           <h1>No Reimbursements on Record</h1>
         ) : (
           reimbursements.map((reimbursement: IReimbursement) => {
-            console.log("We are here");
             return <Reimbursement {...reimbursement} />;
           })
         ))}
@@ -115,47 +141,40 @@ export const ManagerPage: React.FC = () => {
           <h1>No Reimbursements on Record</h1>
         ) : (
           reimbursements.map((reimbursement: IReimbursement) => {
-            console.log("We are here");
             return <Reimbursement {...reimbursement} />;
           })
         ))}
 
       {showAllEmployees &&
-        (reimbursements.length < 1 ? (
-          <h1>No Reimbursements on Record</h1>
+        (employees.length < 1 ? (
+          <h1>No Employees on Record</h1>
         ) : (
-          reimbursements.map((reimbursement: IReimbursement) => {
-            console.log("We are here");
-            return <Reimbursement {...reimbursement} />;
+          employees.map((employee: IUser) => {
+            return <Employee {...employee} />;
           })
         ))}
 
       {showForm && (
         <form className="reimbursement-form">
-          <h3>Create Reimbursement</h3>
-          <label htmlFor="amount">Amount</label>
-          <input type="text" name="" id="" />
-
-          <label htmlFor="submittedDate">Submitted Date</label>
-          <input type="date" />
-
-          <label htmlFor="description">Desscription</label>
-          <input type="text" />
-
-          <label htmlFor="reimbursementType">Reimbursement Type</label>
-          <select id="reimbursementType" name="type">
-            <option value={"lodging"}>LODGING</option>
-            <option value="travel">TRAVEL</option>
-            <option value="food">FOOD</option>
-            <option value="other">OTHER</option>
-          </select>
+          <h3>View Specific Employee</h3>
+          <label htmlFor="userID">User ID</label>
+          <input type="text" onChange={handleInput} name="" id="" />
 
           <label htmlFor="submit">Submit Reimbursemit</label>
-          <button className="form-btn" onClick={sendToDatabase}>
+          <button className="form-btn" onClick={handleGetReimbursementByID}>
             Submit
           </button>
         </form>
       )}
+
+      {showReimbursementsByID &&
+        (!(showReimbursementsByID === null) ? (
+          <h1>No Reimbursements on Record</h1>
+        ) : (
+          reimbursements.map((reimbursement: IReimbursement) => {
+            return <Reimbursement {...reimbursement} />;
+          })
+        ))}
     </>
   );
 };

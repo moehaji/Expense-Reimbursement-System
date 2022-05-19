@@ -3,6 +3,8 @@ import React from "react";
 import "./Reimbursement.css";
 
 import { IReimbursement } from "../../Interfaces/IReimbursement";
+import { RootState } from "../../Store";
+import { useSelector } from "react-redux";
 
 export const ReimbursementType = {
   Lodging: 1,
@@ -20,9 +22,30 @@ export const ReimbursementStatus = {
 export const Reimbursement: React.FC<IReimbursement> = (
   reimbursement: IReimbursement
 ) => {
+  const user = useSelector((state: RootState) => state.user.user);
+
   return (
     <div className="reimbursement">
-      <h2>Date Submitted: {reimbursement.submittedDate}</h2>
+      {user?.role === 2 ? (
+        <h3>User ID: {reimbursement.reimbursementAuthor}</h3>
+      ) : (
+        <></>
+      )}
+
+      {reimbursement.reimbursementStatus === 2 ||
+      reimbursement.reimbursementStatus === 3 ? (
+        <span>
+          <h3>
+            Resolved By:{" "}
+            {reimbursement.reimbursementResolver === 2 ? "Mohamed" : <></>}
+          </h3>
+          <p>Date Resolved: {reimbursement.resolvedDate}</p>
+        </span>
+      ) : (
+        <></>
+      )}
+
+      <h3>Date Submitted: {reimbursement.submittedDate}</h3>
       <p className="desc">Description: {reimbursement.description}</p>
       <p>Amount: {reimbursement.amount}</p>
       <p>
