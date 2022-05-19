@@ -96,4 +96,18 @@ public class UserController {
             ctx.result("Logged out");
         }
     };
+
+    public Handler handleReadUserById = (ctx) -> {
+        String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
+        String username = (String) ctx.req.getSession().getAttribute("username");
+
+        if (loggedIn == null) {
+            ctx.status(401);
+            ctx.result("You must first login");
+        } else if (loggedIn != null) {
+            int userID = Integer.parseInt(ctx.pathParam("id"));
+
+            ctx.result(oMap.writeValueAsString(uServ.employeeViewAccountInformationById(userID)));
+        }
+    };
 }

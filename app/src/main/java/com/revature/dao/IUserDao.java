@@ -8,6 +8,8 @@ public interface IUserDao {
     // READ
     public User employeeViewAccountInformation(String username);
 
+    public User employeeViewAccountInformationById(int id);
+
     public List<User> managerViewAllEmployees();
 
     // UPDATE

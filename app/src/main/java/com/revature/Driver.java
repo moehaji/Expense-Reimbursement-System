@@ -27,7 +27,7 @@ public class Driver {
         ReimbursementController rCon = new ReimbursementController(rServ);
 
         Javalin server = Javalin.create(config -> {
-            config.addStaticFiles("/public", Location.CLASSPATH);
+            //config.addStaticFiles("/public", Location.CLASSPATH);
             config.enableCorsForAllOrigins();
         });
 
@@ -42,6 +42,7 @@ public class Driver {
             path("employee", () -> {
                 get("/view-pending-reimbursements", rCon.handleEmployeeViewPendingReimbursements);
                 get("/view-resolved-reimbursements", rCon.handleEmployeeViewResolvedReimbursements);
+                get("/view-info/{id}", uCon.handleReadUserById);
                 put("/update-account", uCon.handleEmployeeUpdateAccountInformation);
             });
 

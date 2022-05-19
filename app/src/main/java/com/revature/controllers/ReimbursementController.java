@@ -17,7 +17,7 @@ public class ReimbursementController {
     }
 
     public Handler handleEmployeeCreateReimbursement = (ctx) -> {
-        //ctx.header("Access-Control-Expose-Headers", "*");
+        ctx.header("Access-Control-Expose-Headers", "*");
         Reimbursement r = oMap.readValue(ctx.body(), Reimbursement.class);
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
         String username = (String) ctx.req.getSession().getAttribute("username");
@@ -48,7 +48,6 @@ public class ReimbursementController {
         ctx.header("Access-Control-Expose-Headers", "*");
 
         String loggedIn = (String) ctx.req.getSession().getAttribute("loggedIn");
-        int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
         String username = (String) ctx.req.getSession().getAttribute("username");
 
         if (loggedIn == null) {
@@ -57,6 +56,7 @@ public class ReimbursementController {
         } else if (loggedIn != null) {
             int role = Integer.parseInt((String) ctx.req.getSession().getAttribute("role"));
 
+            int authorID = Integer.parseInt((String) ctx.req.getSession().getAttribute("userID"));
             if (role == 1) {
                 ctx.result(oMap.writeValueAsString(rServ.employeeViewPendingReimbursements(authorID, 1, username)));
             } else if (role == 2) {

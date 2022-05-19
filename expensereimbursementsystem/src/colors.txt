@@ -1,0 +1,5 @@
+BG: #2D2E2E
+Black: #0F0F0F
+Border color: rgb(71, 61, 61)
+Button background-color: #22c48ee5;
+Button Hover background-color: #25e4c4;

@@ -1,26 +1,32 @@
 
-f
-java:S1192"IDefine a constant instead of duplicating this literal "loggedIn" 5 times.(†óòÁ8ˆ÷òĞ‹0
-i
-java:S1192"GDefine a constant instead of duplicating this literal "userID" 3 times.(¨«Ò¦øÿÿÿÿ8€»ªÌŒ0
-k
-java:S1192"IDefine a constant instead of duplicating this literal "username" 3 times.(”…ä‹ùÿÿÿÿ8»ªÌŒ0
-t
-java:S1104"WMake handleLogin a static final constant or non-public and provide accessors if needed.(Öª‰8„½óĞ‹0
+_
+java:S1192"IDefine a constant instead of duplicating this literal "loggedIn" 6 times.(†óòÁ
+b
+java:S1192"GDefine a constant instead of duplicating this literal "userID" 3 times.(¨«Ò¦øÿÿÿÿ
+d
+java:S1192"IDefine a constant instead of duplicating this literal "username" 4 times.(”…ä‹ùÿÿÿÿ
+m
+java:S1104"WMake handleLogin a static final constant or non-public and provide accessors if needed.(Öª‰
 
 java:S1104$"iMake handleManagerViewAllEmployees a static final constant or non-public and provide accessors if needed.(µÍ¶´
 ‡
 java:S11049"rMake handleEmployeeUpdateAccountInformation a static final constant or non-public and provide accessors if needed.(ğ÷I
 s
 java:S1104S"XMake handleLogout a static final constant or non-public and provide accessors if needed.(Ö€ãøÿÿÿÿ
+y
+java:S1104d"^Make handleReadUserById a static final constant or non-public and provide accessors if needed.(áûÏàúÿÿÿÿ
 G
 java:S1611"1Remove the parentheses around the "ctx" parameter(Öª‰
 G
 java:S1611$"1Remove the parentheses around the "ctx" parameter(µÍ¶´
 F
 java:S16119"1Remove the parentheses around the "ctx" parameter(ğ÷I
-S
-java:S1611S"1Remove the parentheses around the "ctx" parameter(Ö€ãøÿÿÿÿ8›½óĞ‹0
-J
-java:S1481U"-Remove this unused "username" local variable.(–Î8×øóĞ‹0
-]	java:S125["<This block of commented-out lines of code should be removed.(Àûä‘øÿÿÿÿ8İªÌŒ0
+L
+java:S1611S"1Remove the parentheses around the "ctx" parameter(Ö€ãøÿÿÿÿ
+C
+java:S1481U"-Remove this unused "username" local variable.(–Î
+V	java:S125["<This block of commented-out lines of code should be removed.(Àûä‘øÿÿÿÿ
+L
+java:S1611d"1Remove the parentheses around the "ctx" parameter(áûÏàúÿÿÿÿ
+C
+java:S1481f"-Remove this unused "username" local variable.(–Î

@@ -1,43 +1,54 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser, toggleError } from '../../Slices/UserSlice';
+import { AppDispatch } from '../../Store';
 
-interface LoginFormProps {
-    onClick: (username:string, password:string) => void
-}
+import "./LoginForm.css"
 
-export const LoginForm: React.FC<LoginFormProps> = ({onClick}:LoginFormProps) => {
+export const Login: React.FC = () => {
 
-    //Need to store userinput properly
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
 
-    useEffect(() => {
+    const dispatch:AppDispatch = useDispatch();
     
-    }, [username, password])
-
-    const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const handleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
         if(event.target.name === "username") {
             setUsername(event.target.value);
-        } else if (event.target.name === "password") {
+        } else {
             setPassword(event.target.value);
         }
+    } 
+
+    const handleLogin = (event:React.MouseEvent<HTMLButtonElement>) => {
+        let credentials = {
+            username,
+            password
+        };
+
+        dispatch(loginUser(credentials));
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        onClick(username, password);
-    }
-  
-    return (
-        <div className='login-container'>
-            <h2>Welcome to the Employee Reimbursement System</h2>
-            <h3>Please login below</h3>
-            <form>
-                <h2>Username:</h2>
-                <input type="text" name="username" id="username-input" onChange={handleChange} />
-                <h2>Password:</h2>
-                <input type="password" name="password" id="password-input" onChange={handleChange} />
+    return(
+        <div className="login">
+            <div className="text-container">
+                <h1 className="login-h1">Welcome to the Employee Reimbursement System</h1>
+                <h2>Sign in to view and create a reimbursement</h2>
+            </div>
+            
+            <form className="login-form">
+                <div className="input-div">
+                    <h4 className="input-h4">Please Enter Username</h4>
+                    <input autoComplete='off' className='login-input' type="text" placeholder='username' name='username' onChange={handleInput}/>
+                </div>
+                <div className="input-div">
+                    <h4 className="input-h4">Please Enter Password</h4>
+                    <input className='login-input' type="password" name='password' placeholder='password' onChange={handleInput}/>
+                </div>
             </form>
-            <button onClick={handleClick}>Login</button>
+            <button className='login-btn' onClick={handleLogin}>Login</button>
+
         </div>
-  );
+    )
 
 }

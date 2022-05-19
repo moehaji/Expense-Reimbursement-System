@@ -47,4 +47,9 @@ public class UserService {
             return null;
         }
     }
+
+    public User employeeViewAccountInformationById(int id) {
+        return uDao.employeeViewAccountInformationById(id);
+    }
+
 }
