@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #2D2E2E;
+    --dark: #0F0F0F;
+    --border: rgb(71, 61, 61);
+    --btn-aqua: #22c48ee5;
+    --accent:  #25e4c4;
+    --text-white: #FBFBFB;
+  }
+
+  body {
+      margin: 0;
+      padding: 0;
+  }
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    width: fit-content;
+    height: 80vh;
+    margin: 20px auto;
+    border: 10px solid #22c48ee5;
+    border-radius: 10px;
+    background-color: #FBFBFB;
+    padding: 60px;
+}
+
+ul {
+    list-style: none;
+}

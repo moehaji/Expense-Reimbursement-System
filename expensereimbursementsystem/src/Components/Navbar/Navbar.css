@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #2D2E2E;
+    --dark: #0F0F0F;
+    --border: rgb(71, 61, 61);
+    --btn-aqua: #22c48ee5;
+    --accent:  #25e4c4;
+    --text-white: #FBFBFB;
+  }
+
+  .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--btn-aqua);
+      height: 80px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+  }
+
+  .nav-menu {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      grid-gap: 10px;
+      list-style: none;
+      text-align: center;
+      width: 80%;
+      justify-content: end;
+      margin-right: 2rem;
+  }
+
+  .nav-item {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      margin-right: 10px;
+      margin-left: 10px;
+      padding: 20px;
+  }
+
+  .nav-link {
+      color: var(--dark);
+      font-size: 1.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: bold;
+  }
+
+  .logout {
+      display: flex;
+      align-items: center;
+  }
+
+  .logout-btn {
+      background-color: var(--border);
+      color: var(--text-white);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+      outline: none;
+
+  }
+
+  .profile-pic {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+  }
