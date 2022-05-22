@@ -7,7 +7,6 @@ import { RootState, AppDispatch } from "../../Store";
 import { useState } from "react";
 import { edit } from "../../Slices/UserSlice";
 import "./ProfilePage.css";
-import { userInfo } from "os";
 
 export const ProfilePage: React.FC = () => {
   const profile = useSelector((state: RootState) => state.user);
@@ -27,8 +26,6 @@ export const ProfilePage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const [showForm, setShowForm] = useState(false);
-  // const [showUpdatedForm, setshowUpdatedForm] = use;
-  let number = 0;
 
   const { id } = useParams();
 
@@ -95,73 +92,79 @@ export const ProfilePage: React.FC = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="profile-info">
-        <h1>
-          Profile of {profile.currentProfile?.firstName}{" "}
-          {profile.currentProfile?.lastName}
-        </h1>
+    <body>
+      <div>
+        <Navbar />
+        <div className="profile-info">
+          <h1>
+            Profile of {profile.currentProfile?.firstName}{" "}
+            {profile.currentProfile?.lastName}
+          </h1>
 
-        {!showForm && (
-          <ul className="user-info">
-            <li>First Name: {profile.currentProfile?.firstName}</li>
-            <li>Last Name: {profile.currentProfile?.lastName}</li>
-            <li>Username: {profile.currentProfile?.userName}</li>
-            <li>Password: {profile.currentProfile?.password}</li>
-            <li>Email: {profile.currentProfile?.email}</li>
-            <button name="btn-clicked" onClick={handleEdit}>
-              Edit
-            </button>
-          </ul>
-        )}
+          {!showForm && (
+            <ul className="user-info">
+              <li>First Name: {profile.currentProfile?.firstName}</li>
+              <li>Last Name: {profile.currentProfile?.lastName}</li>
+              <li>Username: {profile.currentProfile?.userName}</li>
+              <li>Password: {profile.currentProfile?.password}</li>
+              <li>Email: {profile.currentProfile?.email}</li>
+              <button
+                className="btn-edit"
+                name="btn-clicked"
+                onClick={handleEdit}
+              >
+                Edit
+              </button>
+            </ul>
+          )}
 
-        {showForm && (
-          <form>
-            <h3>Edit Info</h3>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              onChange={handleInput}
-              type="text"
-              name="firstName"
-              id="firstName"
-            />
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              onChange={handleInput}
-              type="text"
-              name="lastName"
-              id="lastName"
-            />
-            <label htmlFor="username">Username</label>
-            <input
-              onChange={handleInput}
-              type="text"
-              name="username"
-              id="username"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={handleInput}
-              type="password"
-              name="password"
-              id="password"
-            />
-            <label htmlFor="email">Email</label>
-            <input
-              onChange={handleInput}
-              type="email"
-              name="email"
-              id="email"
-            />
+          {showForm && (
+            <form>
+              <h3>Edit Info</h3>
+              <label htmlFor="firstName">First Name</label>
+              <input
+                onChange={handleInput}
+                type="text"
+                name="firstName"
+                id="firstName"
+              />
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                onChange={handleInput}
+                type="text"
+                name="lastName"
+                id="lastName"
+              />
+              <label htmlFor="username">Username</label>
+              <input
+                onChange={handleInput}
+                type="text"
+                name="username"
+                id="username"
+              />
+              <label htmlFor="password">Password</label>
+              <input
+                onChange={handleInput}
+                type="password"
+                name="password"
+                id="password"
+              />
+              <label htmlFor="email">Email</label>
+              <input
+                onChange={handleInput}
+                type="email"
+                name="email"
+                id="email"
+              />
 
-            <label htmlFor="submit">Submit Changes</label>
-            <button onClick={handleUpdateProfile} className="form-btn">
-              Submit
-            </button>
-          </form>
-        )}
+              <label htmlFor="submit">Submit Changes</label>
+              <button onClick={handleUpdateProfile} className="form-btn">
+                Submit
+              </button>
+            </form>
+          )}
+        </div>
       </div>
-    </div>
+    </body>
   );
 };

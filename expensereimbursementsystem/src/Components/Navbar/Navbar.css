@@ -59,7 +59,11 @@
     font-size: 1rem;
     cursor: pointer;
     outline: none;
+}
 
+.logout-btn:hover {
+    background-color: #BB9C54;;
+    color: #233444;
 }
 
 .profile-pic {

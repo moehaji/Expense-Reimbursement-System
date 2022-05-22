@@ -102,79 +102,90 @@ export const EmployeePage: React.FC = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="employeeGreet">
-        <h1>Welcome</h1>
-        <h2>Reimbursements</h2>
-        <div className="btn-group">
-          <button className="btn" onClick={createReimbursement}>
-            Create A New Reimbursement
-          </button>
-          <button className="btn" onClick={getPendingReimbursements}>
-            View All Pending Reimbursements
-          </button>
-          <button className="btn" onClick={getResolvedReimbursements}>
-            View All Resolved Reimbursements
-          </button>
+    <body id="employee">
+      <div>
+        <Navbar />
+        <div className="employeeGreet">
+          <h1>Welcome</h1>
+          <h2>Reimbursements</h2>
+          <div className="btn-group">
+            <button className="btn" onClick={createReimbursement}>
+              Create A New Reimbursement
+            </button>
+            <button className="btn" onClick={getPendingReimbursements}>
+              View All Pending Reimbursements
+            </button>
+            <button className="btn" onClick={getResolvedReimbursements}>
+              View All Resolved Reimbursements
+            </button>
+          </div>
         </div>
+        {checkForContent()}
+
+        {showPending &&
+          (reimbursements.length < 1 ? (
+            <h1>No Reimbursements on Record</h1>
+          ) : (
+            reimbursements.map((reimbursement: IReimbursement) => {
+              console.log("We are here");
+              return <Reimbursement {...reimbursement} />;
+            })
+          ))}
+
+        {showResolved &&
+          (reimbursements.length < 1 ? (
+            <h1>No Reimbursements on Record</h1>
+          ) : (
+            reimbursements.map((reimbursement: IReimbursement) => {
+              console.log("We are here");
+              return <Reimbursement {...reimbursement} />;
+            })
+          ))}
+
+        {showForm && (
+          <form className="reimbursement-form">
+            <h3>Create Reimbursement</h3>
+            <label htmlFor="amount">Amount</label>
+            <input
+              onChange={handleAmountChange}
+              type="text"
+              name="clear"
+              id=""
+            />
+
+            <label htmlFor="submittedDate">Submitted Date</label>
+            <input onChange={handleDateChange} name="clear" type="text" />
+
+            <label htmlFor="description">Desscription</label>
+            <input
+              onChange={handleDescriptionChange}
+              name="clear"
+              type="text"
+            />
+
+            <label htmlFor="reimbursementType">Reimbursement Type</label>
+            <select
+              defaultValue={"default"}
+              onChange={handleTypeChange}
+              id="reimbursementType"
+              name="clear"
+            >
+              <option value="default" disabled>
+                Choose Type
+              </option>
+              <option value={1}>LODGING</option>
+              <option value={2}>TRAVEL</option>
+              <option value={3}>FOOD</option>
+              <option value={4}>OTHER</option>
+            </select>
+
+            <label>Submit Reimbursemit</label>
+            <button className="form-btn" onClick={handleCreateReimbursement}>
+              Submit
+            </button>
+          </form>
+        )}
       </div>
-      {checkForContent()}
-
-      {showPending &&
-        (reimbursements.length < 1 ? (
-          <h1>No Reimbursements on Record</h1>
-        ) : (
-          reimbursements.map((reimbursement: IReimbursement) => {
-            console.log("We are here");
-            return <Reimbursement {...reimbursement} />;
-          })
-        ))}
-
-      {showResolved &&
-        (reimbursements.length < 1 ? (
-          <h1>No Reimbursements on Record</h1>
-        ) : (
-          reimbursements.map((reimbursement: IReimbursement) => {
-            console.log("We are here");
-            return <Reimbursement {...reimbursement} />;
-          })
-        ))}
-
-      {showForm && (
-        <form className="reimbursement-form">
-          <h3>Create Reimbursement</h3>
-          <label htmlFor="amount">Amount</label>
-          <input onChange={handleAmountChange} type="text" name="clear" id="" />
-
-          <label htmlFor="submittedDate">Submitted Date</label>
-          <input onChange={handleDateChange} name="clear" type="text" />
-
-          <label htmlFor="description">Desscription</label>
-          <input onChange={handleDescriptionChange} name="clear" type="text" />
-
-          <label htmlFor="reimbursementType">Reimbursement Type</label>
-          <select
-            defaultValue={"default"}
-            onChange={handleTypeChange}
-            id="reimbursementType"
-            name="clear"
-          >
-            <option value="default" disabled>
-              Choose Type
-            </option>
-            <option value={1}>LODGING</option>
-            <option value={2}>TRAVEL</option>
-            <option value={3}>FOOD</option>
-            <option value={4}>OTHER</option>
-          </select>
-
-          <label>Submit Reimbursemit</label>
-          <button className="form-btn" onClick={handleCreateReimbursement}>
-            Submit
-          </button>
-        </form>
-      )}
-    </div>
+    </body>
   );
 };

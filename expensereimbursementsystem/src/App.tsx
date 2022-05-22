@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import "./App.css";
 import { EmployeePage } from "./Views/EmployeePage/EmployeePage";
-
 import { LoginPage } from "./Views/LoginPage/LoginPage";
 import { ManagerPage } from "./Views/ManagerPage/ManagerPage";
 import { ProfilePage } from "./Views/ProfilePage/ProfilePage";
