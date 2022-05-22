@@ -14,5 +14,4 @@ public interface IUserDao {
 
     // UPDATE
     public User employeeUpdateAccountInformation(User u, int userID);
-
 }
