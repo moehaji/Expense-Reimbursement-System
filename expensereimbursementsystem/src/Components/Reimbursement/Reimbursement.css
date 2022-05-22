@@ -1,18 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-:root {
-    --bg: #2D2E2E;
-    --dark: #0F0F0F;
-    --border: rgb(71, 61, 61);
-    --btn-aqua: #22c48ee5;
-    --accent:  #25e4c4;
-    --text-white: #FBFBFB;
-  }
-
 .reimbursement {
-    background-color: #FBFBFB;
+    background-color: #f8f8ff;
     border: solid 4px #22c48ee5;
     border-radius: 5px;
     margin: auto;
@@ -27,4 +14,8 @@
 .desc {
     inline-size: 200px;
     overflow-wrap: break-word;
+}
+
+.approved {
+    margin-right: 25px;
 }

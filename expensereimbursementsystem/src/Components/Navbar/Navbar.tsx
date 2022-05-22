@@ -5,7 +5,6 @@ import { RootState } from "../../Store";
 import { logout } from "../../Slices/UserSlice";
 import { AppDispatch } from "../../Store";
 import { useDispatch } from "react-redux";
-
 import defaultImage from "../../default-profile-pic.png";
 import "./Navbar.css";
 

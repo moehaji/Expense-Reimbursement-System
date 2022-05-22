@@ -1,78 +1,69 @@
-* {
-    box-sizing: border-box;
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn-aqua);
+    height: 80px;
+    width: 100%;
+    position: sticky;
+    top: 0;
 }
 
-:root {
-    --bg: #2D2E2E;
-    --dark: #0F0F0F;
-    --border: rgb(71, 61, 61);
-    --btn-aqua: #22c48ee5;
-    --accent:  #25e4c4;
-    --text-white: #FBFBFB;
-  }
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    grid-gap: 10px;
+    list-style: none;
+    text-align: center;
+    width: 80%;
+    justify-content: end;
+    margin-right: 2rem;
+}
 
-  .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--btn-aqua);
-      height: 80px;
-      width: 100%;
-      position: sticky;
-      top: 0;
-  }
+.nav-item {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 20px;
+}
 
-  .nav-menu {
-      display: grid;
-      grid-template-columns: repeat(5, auto);
-      grid-gap: 10px;
-      list-style: none;
-      text-align: center;
-      width: 80%;
-      justify-content: end;
-      margin-right: 2rem;
-  }
+.nav-link {
+    color: #f8f8ff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-  .nav-item {
-      display: flex;
-      align-items: center;
-      height: 80px;
-      margin-right: 10px;
-      margin-left: 10px;
-      padding: 20px;
-  }
+.nav-link:hover {
+    color: #BB9C54;
+}
 
-  .nav-link {
-      color: var(--dark);
-      font-size: 1.5rem;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: bold;
-  }
+.logout {
+    display: flex;
+    align-items: center;
+}
 
-  .logout {
-      display: flex;
-      align-items: center;
-  }
+.logout-btn {
+    background-color: #f8f8ff;;
+    color: #233444;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
 
-  .logout-btn {
-      background-color: var(--border);
-      color: var(--text-white);
-      border: none;
-      padding: 10px 25px;
-      border-radius: 15px;
-      font-weight: bold;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
-      font-size: 1rem;
-      cursor: pointer;
-      outline: none;
+}
 
-  }
-
-  .profile-pic {
-      width: 60px;
-      height: 60px;
-      border-radius: 100%;
-  }
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}

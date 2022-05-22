@@ -1,10 +1,13 @@
 import React from "react";
-
 import "./Reimbursement.css";
-
 import { IReimbursement } from "../../Interfaces/IReimbursement";
 import { RootState } from "../../Store";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../Store";
+import { approve } from "../../Slices/UserSlice";
+import { denied } from "../../Slices/UserSlice";
 
 export const ReimbursementType = {
   Lodging: 1,
@@ -23,6 +26,43 @@ export const Reimbursement: React.FC<IReimbursement> = (
   reimbursement: IReimbursement
 ) => {
   const user = useSelector((state: RootState) => state.user.user);
+  const userInfo = useSelector((state: RootState) => state.user);
+  const [reimbursements, setReimbursements] = useState<IReimbursement[]>([]);
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleApprove = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    let approvedReimbursement = {
+      reimbursementID: reimbursement.reimbursementID,
+      amount: reimbursement.amount,
+      submittedDate: reimbursement.submittedDate,
+      resolvedDate: "2022-05-24",
+      description: reimbursement.description,
+      reimbursementAuthor: userInfo.user?.userID,
+      reimbursementResolver: 2,
+      reimbursementStatus: reimbursement.reimbursementStatus,
+      reimbursementType: reimbursement.reimbursementType,
+    };
+
+    dispatch(approve(approvedReimbursement));
+  };
+
+  const handleDenied = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    let deniedReimbursement = {
+      reimbursementID: reimbursement.reimbursementID,
+      amount: reimbursement.amount,
+      submittedDate: reimbursement.submittedDate,
+      resolvedDate: "2022-05-24",
+      description: reimbursement.description,
+      reimbursementAuthor: userInfo.user?.userID,
+      reimbursementResolver: 2,
+      reimbursementStatus: reimbursement.reimbursementStatus,
+      reimbursementType: reimbursement.reimbursementType,
+    };
+
+    dispatch(denied(deniedReimbursement));
+  };
 
   return (
     <div className="reimbursement">
@@ -37,7 +77,7 @@ export const Reimbursement: React.FC<IReimbursement> = (
         <span>
           <h3>
             Resolved By:{" "}
-            {reimbursement.reimbursementResolver === 2 ? "Mohamed" : <></>}
+            {reimbursement.reimbursementResolver === 5 ? "Mohamed" : <></>}
           </h3>
           <p>Date Resolved: {reimbursement.resolvedDate}</p>
         </span>
@@ -87,6 +127,20 @@ export const Reimbursement: React.FC<IReimbursement> = (
           <></>
         )}
       </p>
+      {reimbursement.reimbursementStatus === 1 && user?.role === 2 ? (
+        <span>
+          <button className="approved" onClick={handleApprove}>
+            Approved
+          </button>
+          <button className="denied" onClick={handleDenied}>
+            Denied
+          </button>
+        </span>
+      ) : (
+        <></>
+      )}
+
+      {}
     </div>
   );
 };

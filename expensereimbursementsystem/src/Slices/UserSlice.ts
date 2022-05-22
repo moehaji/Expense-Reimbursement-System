@@ -3,8 +3,6 @@ import axios from "axios";
 import { IReimbursement } from "../Interfaces/IReimbursement";
 import { IUser } from "../Interfaces/IUser";
 
-//Figure out our default state for this slice
-
 interface UserSliceState {
     loading: boolean,
     error: boolean,
@@ -35,6 +33,38 @@ type createReimbursement = {
     reimbursementAuthor: any,
     reimbursementStatus: any,
     reimbursementType: any
+}
+
+type ApprovedReimbursement = {
+    reimbursementID: any,
+    amount: any,
+    submittedDate: any,
+    resolvedDate: any,
+    description: any,
+    reimbursementAuthor: any,
+    reimbursementResolver: any,
+    reimbursementStatus: any,
+    reimbursementType: any
+}
+
+type DeniedReimbursement = {
+    reimbursementID: any,
+    amount: any,
+    submittedDate: any,
+    resolvedDate: any,
+    description: any,
+    reimbursementAuthor: any,
+    reimbursementResolver: any,
+    reimbursementStatus: any,
+    reimbursementType: any
+}
+
+type EditProfile = {
+    userName: string,
+    password?: string,
+    firstName: string,
+    lastName: string,
+    email: string,
 }
 
 export const loginUser = createAsyncThunk(
@@ -115,6 +145,45 @@ export const createReimbursementUser = createAsyncThunk(
     }
 )
 
+export const approve = createAsyncThunk(
+    'manager/update',
+    async (reimbursementID:ApprovedReimbursement, thunkAPI) => {
+        try{
+            axios.defaults.withCredentials = true;
+            const res = await axios.put('http://localhost:8080/manager/approve-reimbursement', reimbursementID)
+            return res.data;
+        } catch(e){
+            return thunkAPI.rejectWithValue('Something went wrong.')
+        }
+    }
+)
+
+export const denied = createAsyncThunk(
+    'manager/update2',
+    async (reimbursementID:DeniedReimbursement, thunkAPI) => {
+        try{
+            axios.defaults.withCredentials = true;
+            const res = await axios.put('http://localhost:8080/manager/deny-reimbursement', reimbursementID)
+            return res.data;
+        } catch(e){
+            return thunkAPI.rejectWithValue('Something went wrong.')
+        }
+    }
+)
+
+export const edit = createAsyncThunk(
+    'employee/update',
+    async (employeeProfile:EditProfile, thunkAPI) => {
+        try{
+            axios.defaults.withCredentials = true;
+            const res = await axios.put('http://localhost:8080/employee/update-account', employeeProfile)
+            return res.data;
+        } catch(e){
+            return thunkAPI.rejectWithValue('Something went wrong.')
+        }
+    }
+)
+
 export const logout = createAsyncThunk(
     "user/logout",
     async (thunkAPI) => {
@@ -158,13 +227,46 @@ export const UserSlice = createSlice({
             state.loading = false;
             state.currentProfile = action.payload;
         });
+        builder.addCase(getReimbursementsByID.pending, (state, action)=> {
+            state.loading = true;
+        });
         builder.addCase(getReimbursementsByID.fulfilled, (state, action)=> {
-            state.error = false;
             state.loading = false;
+            state.reimbursement = action.payload;
+            console.log(state.reimbursement);
         });
         builder.addCase(createReimbursementUser.fulfilled, (state, action)=> {
             state.error = false;
             state.loading = false;
+        });
+        builder.addCase(approve.rejected, (state, action)=> {
+            state.error = true;
+            state.loading = false;
+        })
+        builder.addCase(approve.pending, (state, action)=> {
+            state.loading = true;
+        });
+        builder.addCase(approve.fulfilled, (state, action)=> {
+            state.error = false;
+            state.loading = false;
+            state.reimbursement = action.payload;
+        });
+        builder.addCase(denied.rejected, (state, action)=> {
+            state.error = true;
+            state.loading = false;
+        })
+        builder.addCase(denied.pending, (state, action)=> {
+            state.loading = true;
+        });
+        builder.addCase(denied.fulfilled, (state, action)=> {
+            state.error = false;
+            state.loading = false;
+            state.reimbursement = action.payload;
+        });
+        builder.addCase(edit.fulfilled, (state, action)=> {
+            state.error = false;
+            state.loading = false;
+            state.currentProfile = action.payload;
         });
         builder.addCase(logout.fulfilled, (state, action)=> {
             state.user = undefined;

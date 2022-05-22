@@ -1,10 +1,6 @@
 import React from "react";
-
 import "./Employee.css";
-
 import { IUser } from "../../Interfaces/IUser";
-import { RootState } from "../../Store";
-import { useSelector } from "react-redux";
 
 export const Employee: React.FC<IUser> = (employee: IUser) => {
   return (
