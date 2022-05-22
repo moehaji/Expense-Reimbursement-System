@@ -14,6 +14,7 @@ import { createReimbursementUser } from "../../Slices/UserSlice";
 
 export const EmployeePage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);
+  const profile = useSelector((state: RootState) => state.user);
   const navigator = useNavigate();
   const [reimbursements, setReimbursements] = useState<IReimbursement[]>([]);
   const [showForm, setShowForm] = useState(false);
@@ -104,7 +105,7 @@ export const EmployeePage: React.FC = () => {
     <div>
       <Navbar />
       <div className="employeeGreet">
-        <h1>Welcome: {userInfo.user?.firstName}</h1>
+        <h1>Welcome</h1>
         <h2>Reimbursements</h2>
         <div className="btn-group">
           <button className="btn" onClick={createReimbursement}>
@@ -144,20 +145,20 @@ export const EmployeePage: React.FC = () => {
         <form className="reimbursement-form">
           <h3>Create Reimbursement</h3>
           <label htmlFor="amount">Amount</label>
-          <input onChange={handleAmountChange} type="text" name="" id="" />
+          <input onChange={handleAmountChange} type="text" name="clear" id="" />
 
           <label htmlFor="submittedDate">Submitted Date</label>
-          <input onChange={handleDateChange} type="text" />
+          <input onChange={handleDateChange} name="clear" type="text" />
 
           <label htmlFor="description">Desscription</label>
-          <input onChange={handleDescriptionChange} type="text" />
+          <input onChange={handleDescriptionChange} name="clear" type="text" />
 
           <label htmlFor="reimbursementType">Reimbursement Type</label>
           <select
             defaultValue={"default"}
             onChange={handleTypeChange}
             id="reimbursementType"
-            name="type"
+            name="clear"
           >
             <option value="default" disabled>
               Choose Type
