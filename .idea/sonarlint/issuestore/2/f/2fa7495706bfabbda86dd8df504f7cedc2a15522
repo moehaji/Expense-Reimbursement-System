@@ -1,10 +1,0 @@
-
-B
-java:S1602",Remove useless curly braces around statement(ëñüÎ
-i
-java:S1612"SReplace this lambda with method reference 'JavalinConfig::enableCorsForAllOrigins'.(ëñüÎ
-Q	java:S125"<This block of commented-out lines of code should be removed.(¯•üõ
-B
-java:S1602:",Remove useless curly braces around statement(‡‚
-c
-java:S1128"ARemove this unused import 'io.javalin.http.staticfiles.Location'.(£…ûÿÿÿÿ8€åå¬0
