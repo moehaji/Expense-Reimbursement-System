@@ -11,7 +11,6 @@ import { Employee } from "../../Components/Employee/Employee";
 import { AppDispatch } from "../../Store";
 import { useDispatch } from "react-redux";
 import { getReimbursementsByID } from "../../Slices/UserSlice";
-
 import axios from "axios";
 import "./ManagerPage.css";
 
@@ -26,13 +25,13 @@ export const ManagerPage: React.FC = () => {
   const [showResolved, setShowResolved] = useState(false);
   const [showAllEmployees, setShowAllEmployees] = useState(false);
   const [showReimbursementsByID, setShowReimbursementsByID] = useState(false);
-  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     //If the user is not logged in, push them to the login page
     if (!userInfo.user) {
       navigator("/login");
     }
+    console.log(reimbursements);
   }, [userInfo]);
 
   const checkForContent: any = () => {
@@ -92,14 +91,18 @@ export const ManagerPage: React.FC = () => {
     setUserID(event.target.value);
   };
 
-  const handleGetReimbursementByID = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-    setShowReimbursementsByID(!showReimbursementsByID);
+  const handleGetReimbursementByID = async () => {
+    // event.preventDefault();
+    setShowPending(false);
+    setShowResolved(false);
     setShowForm(false);
+    setShowReimbursementsByID(!showReimbursementsByID);
 
-    dispatch(getReimbursementsByID(userID));
+    axios.defaults.withCredentials = true;
+    let res = await axios.get(
+      `http://localhost:8080/manager/view-specific-employee-reimbursements/${userID}`
+    );
+    setReimbursements(res.data);
   };
 
   return (
@@ -158,7 +161,7 @@ export const ManagerPage: React.FC = () => {
         <form className="reimbursement-form">
           <h3>View Specific Employee</h3>
           <label htmlFor="userID">User ID</label>
-          <input type="text" onChange={handleInput} name="" id="" />
+          <input type="text" onChange={handleInput} name="user-id" id="" />
 
           <label htmlFor="submit">Submit Reimbursemit</label>
           <button className="form-btn" onClick={handleGetReimbursementByID}>
@@ -168,7 +171,7 @@ export const ManagerPage: React.FC = () => {
       )}
 
       {showReimbursementsByID &&
-        (!(showReimbursementsByID === null) ? (
+        (reimbursements.length < 1 ? (
           <h1>No Reimbursements on Record</h1>
         ) : (
           reimbursements.map((reimbursement: IReimbursement) => {
