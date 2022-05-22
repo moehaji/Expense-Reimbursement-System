@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 :root {
     --bg: #2D2E2E;
     --dark: #0F0F0F;
     --border: rgb(71, 61, 61);
-    --btn-aqua: #22c48ee5;
-    --accent:  #25e4c4;
-    --text-white: #FBFBFB;
+    --btn-aqua: #BB9C54;
+    --accent:  #BB9C54;
+    --text-white: black;
   }
 
 * {
@@ -19,6 +18,7 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--bg);
+    /* color: white; */
+    background-color: #f8f8ff;
 }
 
