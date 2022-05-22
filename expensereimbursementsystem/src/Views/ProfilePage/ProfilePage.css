@@ -6,7 +6,7 @@
     --bg: #2D2E2E;
     --dark: #0F0F0F;
     --border: rgb(71, 61, 61);
-    --btn-aqua: #22c48ee5;
+    --btn-aqua: #233444;
     --accent:  #25e4c4;
     --text-white: #FBFBFB;
   }
@@ -20,9 +20,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     
-    text-align: center;
+    text-align: left;
     width: fit-content;
     height: 80vh;
     margin: 20px auto;
@@ -34,4 +34,23 @@
 
 ul {
     list-style: none;
+}
+
+.edit {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit {
+    margin: 20px auto;
+}
+
+.username {
+    display: none;
+}
+
+.username {
+    display: block;
 }
