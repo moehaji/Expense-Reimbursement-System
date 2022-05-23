@@ -13,3 +13,19 @@
 2022-05-22 14:09:29 INFO  LoggingUtil:36 - Employee with username: bayode79, viewed their resolved reimbursements
 2022-05-22 14:19:03 INFO  LoggingUtil:23 - User: bayode79 logged in successfully
 2022-05-22 14:20:29 INFO  LoggingUtil:23 - User: bayode79 logged in successfully
+2022-05-23 06:57:08 INFO  LoggingUtil:23 - User: mark354 logged in successfully
+2022-05-23 06:57:48 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:52 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:53 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:54 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:55 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:55 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:55 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:57 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:58 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:58 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:57:59 INFO  LoggingUtil:36 - Employee with username: mark354, viewed their resolved reimbursements
+2022-05-23 06:58:58 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:59:00 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:59:00 INFO  LoggingUtil:31 - Employee with username: mark354, viewed their pending reimbursements
+2022-05-23 06:59:01 INFO  LoggingUtil:36 - Employee with username: mark354, viewed their resolved reimbursements
