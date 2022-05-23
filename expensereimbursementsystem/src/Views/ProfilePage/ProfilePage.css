@@ -26,6 +26,10 @@ body {
     padding: 60px;
 }
 
+.profile-name{
+    margin-bottom: 90px;
+}
+
 ul {
     list-style: none;
 }
@@ -43,6 +47,34 @@ ul {
 
 .user-info button:hover {
     background: #BB9C54;
+    color: #f8f8ff;
+    transition: .2s;
+}
+
+.update-input {
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+#form-btn {
+    margin-top: 70px;
+    background-color: #233444;
+    color: #f8f8ff;
+    border: none;
+    padding: 5px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+#form-btn:hover {
+    background-color: #BB9C54;
     color: #f8f8ff;
     transition: .2s;
 }

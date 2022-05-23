@@ -96,7 +96,7 @@ export const ProfilePage: React.FC = () => {
       <div>
         <Navbar />
         <div className="profile-info">
-          <h1>
+          <h1 className="profile-name">
             Profile of {profile.currentProfile?.firstName}{" "}
             {profile.currentProfile?.lastName}
           </h1>
@@ -121,51 +121,76 @@ export const ProfilePage: React.FC = () => {
           {showForm && (
             <form>
               <h3>Edit Info</h3>
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor="firstName" className="update-label">
+                First Name
+              </label>
               <input
                 onChange={handleInput}
+                className="update-input"
+                placeholder="first name"
                 type="text"
                 name="firstName"
                 id="firstName"
                 autoComplete="off"
               />
-              <label htmlFor="lastName">Last Name</label>
+
+              <label htmlFor="lastName" className="update-label">
+                Last Name
+              </label>
               <input
                 onChange={handleInput}
+                className="update-input"
+                placeholder="last name"
                 type="text"
                 name="lastName"
                 id="lastName"
                 autoComplete="off"
               />
-              <label htmlFor="username">Username</label>
+
+              <label htmlFor="username" className="update-label">
+                Username
+              </label>
               <input
                 onChange={handleInput}
+                className="update-input"
+                placeholder="username"
                 type="text"
                 name="username"
                 id="username"
                 autoComplete="off"
               />
-              <label htmlFor="password">Password</label>
+
+              <label htmlFor="password" className="update-label">
+                Password
+              </label>
               <input
                 onChange={handleInput}
+                className="update-input"
+                placeholder="password"
                 type="password"
                 name="password"
                 id="password"
                 autoComplete="off"
               />
-              <label htmlFor="email">Email</label>
+
+              <label htmlFor="email" className="update-label">
+                Email
+              </label>
               <input
                 onChange={handleInput}
+                className="update-input"
+                placeholder="email"
                 type="email"
                 name="email"
                 id="email"
                 autoComplete="off"
               />
 
-              <label htmlFor="submit">Submit Changes</label>
-              <button onClick={handleUpdateProfile} className="form-btn">
-                Submit
-              </button>
+              <div>
+                <button onClick={handleUpdateProfile} id="form-btn">
+                  Submit
+                </button>
+              </div>
             </form>
           )}
         </div>
