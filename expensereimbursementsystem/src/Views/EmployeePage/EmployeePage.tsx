@@ -147,6 +147,8 @@ export const EmployeePage: React.FC = () => {
             <label htmlFor="amount">Amount</label>
             <input
               onChange={handleAmountChange}
+              className="reimbursement-input"
+              placeholder="amount"
               type="text"
               name="clear"
               id=""
@@ -157,6 +159,8 @@ export const EmployeePage: React.FC = () => {
             <label htmlFor="submittedDate">Submitted Date</label>
             <input
               onChange={handleDateChange}
+              className="reimbursement-input"
+              placeholder="YYYY/MM/DD"
               name="clear"
               type="text"
               autoComplete="off"
@@ -166,6 +170,8 @@ export const EmployeePage: React.FC = () => {
             <label htmlFor="description">Desscription</label>
             <input
               onChange={handleDescriptionChange}
+              className="reimbursement-input"
+              placeholder="max 500 characters"
               name="clear"
               type="text"
               autoComplete="off"
@@ -189,7 +195,7 @@ export const EmployeePage: React.FC = () => {
               <option value={4}>OTHER</option>
             </select>
 
-            <label>Submit Reimbursemit</label>
+            {/* <label>Submit Reimbursemit</label> */}
             <button className="form-btn" onClick={handleCreateReimbursement}>
               Submit
             </button>
