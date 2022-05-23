@@ -20,15 +20,13 @@ export const LoginPage: React.FC = () => {
   }, [userState]);
 
   return (
-    <body>
-      <div className="employee-page">
-        {userState.error ? (
-          <h2 className="login-error">Username or password is incorrect.</h2>
-        ) : (
-          <></>
-        )}
-        <Login />
-      </div>
-    </body>
+    <div className="employee-page">
+      {userState.error ? (
+        <h2 className="login-error">Username or password is incorrect.</h2>
+      ) : (
+        <></>
+      )}
+      <Login />
+    </div>
   );
 };
