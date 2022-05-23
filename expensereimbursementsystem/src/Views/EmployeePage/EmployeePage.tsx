@@ -150,16 +150,26 @@ export const EmployeePage: React.FC = () => {
               type="text"
               name="clear"
               id=""
+              autoComplete="off"
+              required
             />
 
             <label htmlFor="submittedDate">Submitted Date</label>
-            <input onChange={handleDateChange} name="clear" type="text" />
+            <input
+              onChange={handleDateChange}
+              name="clear"
+              type="text"
+              autoComplete="off"
+              required
+            />
 
             <label htmlFor="description">Desscription</label>
             <input
               onChange={handleDescriptionChange}
               name="clear"
               type="text"
+              autoComplete="off"
+              required
             />
 
             <label htmlFor="reimbursementType">Reimbursement Type</label>
@@ -168,6 +178,7 @@ export const EmployeePage: React.FC = () => {
               onChange={handleTypeChange}
               id="reimbursementType"
               name="clear"
+              required
             >
               <option value="default" disabled>
                 Choose Type

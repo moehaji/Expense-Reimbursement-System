@@ -127,6 +127,7 @@ export const ProfilePage: React.FC = () => {
                 type="text"
                 name="firstName"
                 id="firstName"
+                autoComplete="off"
               />
               <label htmlFor="lastName">Last Name</label>
               <input
@@ -134,6 +135,7 @@ export const ProfilePage: React.FC = () => {
                 type="text"
                 name="lastName"
                 id="lastName"
+                autoComplete="off"
               />
               <label htmlFor="username">Username</label>
               <input
@@ -141,6 +143,7 @@ export const ProfilePage: React.FC = () => {
                 type="text"
                 name="username"
                 id="username"
+                autoComplete="off"
               />
               <label htmlFor="password">Password</label>
               <input
@@ -148,6 +151,7 @@ export const ProfilePage: React.FC = () => {
                 type="password"
                 name="password"
                 id="password"
+                autoComplete="off"
               />
               <label htmlFor="email">Email</label>
               <input
@@ -155,6 +159,7 @@ export const ProfilePage: React.FC = () => {
                 type="email"
                 name="email"
                 id="email"
+                autoComplete="off"
               />
 
               <label htmlFor="submit">Submit Changes</label>
