@@ -193,13 +193,15 @@ public class ReimbursementDaoJDBC implements IReimbursementDao {
     public Reimbursement managerUpdateReimbursementStatus(Reimbursement r, int status) {
         Connection c = cs.getConnection();
 
-        String sql = "update reimbursement set reimbursement_status = ? where reimbursement_id = ?";
+        String sql = "update reimbursement set reimbursement_status = ?, reimbursement_resolver = ?, resolved_date = ? where reimbursement_id = ?";
 
         try {
             PreparedStatement ps = c.prepareStatement(sql);
 
             ps.setInt(1, status);
-            ps.setInt(2, r.getReimbursementID());
+            ps.setInt(2, 5);
+            ps.setString(3, "2022-05-24");
+            ps.setInt(4, r.getReimbursementID());
 
             ps.execute();
 

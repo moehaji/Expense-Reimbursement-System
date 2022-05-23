@@ -160,7 +160,7 @@ export const EmployeePage: React.FC = () => {
             <input
               onChange={handleDateChange}
               className="reimbursement-input"
-              placeholder="YYYY/MM/DD"
+              placeholder="YYYY-MM-DD"
               name="clear"
               type="text"
               autoComplete="off"

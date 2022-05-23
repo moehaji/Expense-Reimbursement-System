@@ -161,9 +161,16 @@ export const ManagerPage: React.FC = () => {
         <form className="reimbursement-form">
           <h3>View Specific Employee</h3>
           <label htmlFor="userID">User ID</label>
-          <input type="text" onChange={handleInput} name="user-id" id="" />
+          <input
+            type="text"
+            onChange={handleInput}
+            placeholder="id"
+            name="user-id"
+            autoComplete="off"
+            id="view-specific"
+            required
+          />
 
-          <label htmlFor="submit">Submit Reimbursemit</label>
           <button className="form-btn" onClick={handleGetReimbursementByID}>
             Submit
           </button>
