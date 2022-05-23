@@ -3,7 +3,7 @@
     --dark: #0F0F0F;
     --border: rgb(71, 61, 61);
     --btn-aqua: #233444;
-    --accent:  #25e4c4;
+    --accent:  #f8f8ff;
     --text-white: #FBFBFB;
   }
 
@@ -20,7 +20,7 @@ body {
     width: fit-content;
     height: 80vh;
     margin: 20px auto;
-    border: 10px solid #233444;;
+    border: 10px solid #233444;
     border-radius: 10px;
     background-color: #FBFBFB;
     padding: 60px;
@@ -38,10 +38,11 @@ ul {
     border-radius: 5px;
     font-weight: bold;
     background: #233444;
-    color: white;
+    color: #f8f8ff;
 }
 
 .user-info button:hover {
     background: #BB9C54;
-    color: #233444;
+    color: #f8f8ff;
+    transition: .2s;
 }

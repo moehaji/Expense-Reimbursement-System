@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { RootState } from "../../Store";
 import { useNavigate } from "react-router-dom";
-import { Loading } from "../../Components/Loading/Loading";
 import { Reimbursement } from "../../Components/Reimbursement/Reimbursement";
 import { IReimbursement } from "../../Interfaces/IReimbursement";
 import { IUser } from "../../Interfaces/IUser";
 import { Employee } from "../../Components/Employee/Employee";
+import axios from "axios";
+import "./ManagerPage.css";
+import { Loading } from "../../Components/Loading/Loading";
 import { AppDispatch } from "../../Store";
 import { useDispatch } from "react-redux";
 import { getReimbursementsByID } from "../../Slices/UserSlice";
-import axios from "axios";
-import "./ManagerPage.css";
 
 export const ManagerPage: React.FC = () => {
   const userInfo = useSelector((state: RootState) => state.user);

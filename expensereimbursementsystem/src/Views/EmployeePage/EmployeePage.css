@@ -1,3 +1,7 @@
+body #employee{
+    background: #f8f8ff;
+}
+
 .employeeGreet {
     border-radius: 5px;
     width: 100%;
@@ -21,7 +25,8 @@
 }
 
 .btn:hover {
-    background-color: #25e4c4;
+    background-color: #BB9C54;
+    color: #f8f8ff;
     border: none;
 }
 
