@@ -7,9 +7,10 @@
     height: fit-content;
     width: fit-content;
     margin: auto;
-    /* border: 10px solid #22c48ee5; */
+    border: 10px solid #22c48ee5;
     border-radius: 10px;
-    background-color: #FBFBFB;
+    background-color: #233444;
+    color: #F8F8FF;
     padding: 60px;
 }
 
@@ -36,13 +37,11 @@
     border-radius: 5px;
     font-family: 'Poppins';
     font-weight: bold;
-    background: #233444;
-    color: white;
+    background-color: white;
+    color: #233444;;
 }
 
 .login-btn:hover {
     background-color: #BB9C54;
-    /* color:#233444; */
-    border-radius: 5px;
     transition: .3s;
 }
