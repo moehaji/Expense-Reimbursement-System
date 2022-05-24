@@ -261,3 +261,35 @@
 2022-05-23 18:05:45 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
 2022-05-23 18:05:45 INFO  LoggingUtil:46 - Manager viewed all resolved reimbursements
 2022-05-23 18:05:48 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-24 06:25:52 INFO  LoggingUtil:23 - User: bayode79 logged in successfully
+2022-05-24 06:25:55 INFO  LoggingUtil:31 - Employee with username: bayode79, viewed their pending reimbursements
+2022-05-24 06:25:56 INFO  LoggingUtil:36 - Employee with username: bayode79, viewed their resolved reimbursements
+2022-05-24 06:26:04 INFO  LoggingUtil:31 - Employee with username: bayode79, viewed their pending reimbursements
+2022-05-24 06:26:12 INFO  LoggingUtil:36 - Employee with username: bayode79, viewed their resolved reimbursements
+2022-05-24 06:26:19 INFO  LoggingUtil:31 - Employee with username: bayode79, viewed their pending reimbursements
+2022-05-24 06:26:46 INFO  LoggingUtil:25 - Employee with username: bayode79, created a new reimbursement request
+2022-05-24 06:26:48 INFO  LoggingUtil:31 - Employee with username: bayode79, viewed their pending reimbursements
+2022-05-24 06:27:26 INFO  LoggingUtil:43 - User: bayode11 updated their account information
+2022-05-24 06:27:33 INFO  LoggingUtil:31 - Employee with username: bayode79, viewed their pending reimbursements
+2022-05-24 06:27:49 INFO  LoggingUtil:23 - User: mohamed62 logged in successfully
+2022-05-24 06:27:55 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:27:57 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:27:59 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-24 06:28:12 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-24 06:28:13 INFO  LoggingUtil:46 - Manager viewed all resolved reimbursements
+2022-05-24 06:28:23 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:28:41 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-24 06:28:43 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:29:21 INFO  LoggingUtil:23 - User: mohamed62 logged in successfully
+2022-05-24 06:29:33 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:29:56 INFO  LoggingUtil:23 - User: mohamed62 logged in successfully
+2022-05-24 06:30:17 INFO  LoggingUtil:35 - Manager viewed all employees
+2022-05-24 06:30:27 INFO  LoggingUtil:46 - Manager viewed all resolved reimbursements
+2022-05-24 06:30:30 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:30:46 INFO  LoggingUtil:51 - Manager viewed all the reimbursements of user with id: 4
+2022-05-24 06:30:55 INFO  LoggingUtil:57 - Manager approved the reimbursement id: 15
+2022-05-24 06:30:57 INFO  LoggingUtil:41 - Manager viewed all pending reimbursements
+2022-05-24 06:30:58 INFO  LoggingUtil:46 - Manager viewed all resolved reimbursements
+2022-05-24 06:31:24 INFO  LoggingUtil:23 - User: bayode11 logged in successfully
+2022-05-24 06:31:27 INFO  LoggingUtil:31 - Employee with username: bayode11, viewed their pending reimbursements
+2022-05-24 06:31:31 INFO  LoggingUtil:36 - Employee with username: bayode11, viewed their resolved reimbursements
