@@ -9,7 +9,7 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 -   The application employs the DAO design pattern, and is separated into different layers: (Models, DAO, Service, Controllers)
 -   The back-end system uses JDBC to talk to the Database
 -   The java backend uses Javalin to create the webserver, and process HTTP requests from the client
--   The front-end view is ceated using ReactJS
+-   The front-end view is created using ReactJS
 -   Use Log4J and JUnit are used for logging and testing. At least 75% code coverage on service methods
 
 ## User Stories
